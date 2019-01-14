@@ -1,0 +1,18 @@
+#contenedor {
+    height: 500px;
+    width: 90%;
+    background-color: black;
+    margin: 1px auto
+}
+
+img {
+    height:10% ;
+    width: 50%
+}
+
+#cabecera {
+    height: 100px;
+    width: 100%;
+    background-color: red
+
+}
