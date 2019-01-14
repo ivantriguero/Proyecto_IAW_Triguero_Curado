@@ -8,7 +8,7 @@ body{
 }
 
 #logo {
-    height:50% ;
+    height:75% ;
     width: 3%;
     float: left;
     margin-left: 2%;
@@ -26,11 +26,10 @@ h1 {
 }
 
 #cabecera {
-    height: 90px;
+    height: 60px;
     width: 100%;
     background-color:#C70039;
-    margin-top:0px;
-    position: fixed
+    margin-top:0px
 }
 
 #usuario {
@@ -60,14 +59,14 @@ span:hover{
     color: black;
 }
 
-#usuario ~ div {
+#cabecera > div {
     float: right;
     color: white;
     font-family: 'Anton', sans-serif;
     padding: 1%;
     font-size: 125%
 }
-#usuario ~ div:hover {
+#cabecera > div:hover {
     float: right;
     color: black;
     font-family: 'Anton', sans-serif;
@@ -78,7 +77,7 @@ span:hover{
 }
 
 #body {
-    height: 1000px;
+    height: 573px;
     width: 100%;
     background-color:white;
     margin-top:0px
@@ -88,8 +87,5 @@ span:hover{
     height: 70px;
     width: 100%;
     background-color:#C70039;
-    margin-top:0px;
-    color:white;
-    text-align: center;
-    padding-top: 2.5%
+    margin-top:0px
 }
