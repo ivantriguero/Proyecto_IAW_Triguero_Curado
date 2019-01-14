@@ -3,8 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Passing info with POST and HTML FORMS using a single file.</title>
+    <title>MercaPalacio</title>
+    <link rel="shortcut icon" href="logo1.png" />
     <link rel="stylesheet" type="text/css" href="index.css">
+    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
     <style>
       span {
         width: 100px;
@@ -14,9 +16,18 @@
   </head>
   <body>
       <div id="contenedor">
-      <div id="cabecera"></div>
-        <img src="logo1.png">
-
+        <div id="cabecera">
+          <div id="usuario">
+            <span>Registrarse</span>
+            <span>Iniciar sesión</span>
+          </div>
+          <img id="logo" src="logo1.png">
+          <h1>MercaPalacio</h1>
+          <div>Atención al cliente</div>
+          <div>Proveedores</div>
+          <div>Productos</div>
+        </div>
+        <div id="body"></div>
       </div>
 
 
