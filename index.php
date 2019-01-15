@@ -6,7 +6,6 @@
     <title>MercaPalacio</title>
     <link rel="shortcut icon" href="logo1.png" />
     <link rel="stylesheet" type="text/css" href="index.css">
-    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <style>
@@ -18,18 +17,24 @@
   </head>
   <body>
       <div class ="container-fluid" id="contenedor">
-          <div id="cabecera" class="row">
-            <div id="usuario" class="row align-content-right">
-              <div class="col-md-1">Iniciar sesión</div>
-              <div class="col-md-1">Registrase</div>
+          <div id="cabecera">
+            <div class="row justify-content-end" style="border-bottom:2px solid white;background-color:#C70039;color:white">
+              <div class="col-md-2">Iniciar sesión</div>
+              <div class="col-md-1">Registrarse</div>
             </div>
-            <div class="row" style="width:80%">
+            <div class="row justify-content-center" style="background-color:#C70039">
               <div class="col-md-1"><img src="logo1.png" class="img-fluid"></div>
-              <div class="col-md-1"><h1>MercaPalacio</h1></div>
-              <div class="col-md-10">
-                <div><h2>Productos</h2></div>
-              </div>
+              <div class="col-md-4"><h1 style="font-size:450%;color:white">MercaPalacio</h1></div>
             </div>
+            <div class="row" style="background-color:#C70039;border-top:2px solid white;color:white">
+              <div class="col-md-1">Productos</div>
+              <div class="col-md-1">MercaPalacio</div>
+            </div>
+            <div class="row">
+              <div id="imagen" class="col-md-6"><img src="./imagenes/mercado.jpg" class="img-fluid"></div>
+              <div class="col-md-6"><h1>MercaPalacio</h1></div>
+            </div>
+
           </div>
       </div>
 

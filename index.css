@@ -1,29 +1,14 @@
-body{
-    margin: 0px;
+#cabecera{
+    background-color: #C70039;
+    height: 100px;
 }
 
-
-h1 {
-    color: white;
-    font-family: 'Anton', sans-serif;
-    font-size: 200%;
-    padding-top: 1%;
-    padding-left:2%;
-    margin-top:0px;
-    float: left
+#imagen img:hover {
+    -webkit-transform:scale(1.3);transform:scale(1.3);
+    -webkit-transition: all .5s ease-in-out;
 }
 
-#cabecera {
-    height: 13%;
-    width: 100%;
-    background-color:#C70039;
-    margin-top:0px;
-    position: fixed
+#imagen{
+    overflow:hidden;
+    padding-left: 0px;
 }
-
-#usuario {
-    width: 100%;
-    height: 20%;
-    border-bottom:2px solid black;
-}
-
