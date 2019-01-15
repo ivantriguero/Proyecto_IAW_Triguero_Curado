@@ -15,22 +15,14 @@
     </style>
   </head>
   <body>
-      <div id="contenedor">
-        <div id="cabecera">
-          <img id="logo" src="../logo1.png">
-          <h1>MercaPalacio</h1>
-          <div>Atención al cliente</div>
-          <div>Proveedores</div>
-          <div>Productos</div>
-        </div>
-        <div id="body"></div>
-      </div>
-
-
-
+  <div class ="container-fluid" id="contenedor">
       <?php 
-
+include './cabecera.php';
 ?>
+
+
+
+</div>
           
 
   </body>
