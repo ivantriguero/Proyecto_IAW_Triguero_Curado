@@ -1,0 +1,72 @@
+.imagebox{
+overflow:hidden;
+height: 450px;
+width:300px;
+  }
+
+.imagen1 {
+	width:300px;
+  height:450px;
+	background-image: url("../imagenes/comida1.jpg");
+	background-position:center;
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  -ms-transition: all .5s ease;
+  -o-transition: all .5s ease;
+  transition: all .5s ease;
+} 
+.imagen1:hover {  
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -o-transform: scale(1.2);
+  -ms-transform: scale(1.2); /* IE 9 */ 
+  transform: scale(1.2);
+} 
+
+.e1{
+    display: none;
+    font-size: 35px;
+    color: #ffffff;
+    font-family: sans-serif;
+    text-align: center;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 50px;
+    cursor: pointer;
+}
+
+.imagebox:hover .imagen1, .imagebox:focus .imagen1 {
+    -ms-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.imagebox:hover .imagen1:before, .imagebox:focus .imagen1:before {
+    display: block;
+}
+
+.imagebox:hover .e1, .imagebox:focus .e1 {
+    display: block;
+}
+
+.imagen1:before {
+    content: "";
+    display: none;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(52,73,94,0.75);
+}
+
+@media screen and (max-width: 960px) {
+    .parent {width: 100%; margin: 20px 0px}
+		.wrapper {padding: 20px 20px;}
+}
