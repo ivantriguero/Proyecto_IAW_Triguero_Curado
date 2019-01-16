@@ -20,7 +20,7 @@
 
             <div class="row justify-content-end" style="border-bottom:2px solid white;background-color:#C70039;color:white">
               <div class="col-md-2">Iniciar sesión</div>
-              <div class="col-md-1"><a href="./registro.php">Registrarse</a></div>
+              <div class="col-md-1"><a href="./registro.php" style='text-decoration:none;color:white;'>Registrarse</a></div>
             </div>
             <div class="row justify-content-center" style="background-color:#C70039">
               <div class="col-md-1"><img src="./imagenes/logo1.png" class="img-fluid"></div>
