@@ -28,9 +28,9 @@ include './iniciosesion.php';
 
 
             <div class="row justify-content-end" style="border-bottom:2px solid white;background-color:#C70039;color:white">
-              <div class="col-md-1"><button type="button" class="btn btn-outline-danger" style="color:white" data-toggle="modal" data-target="#miModal">
+              <div class="col-md-1"><a href="./cuenta.php"><button type="button" class="btn btn-outline-danger" style="color:white">
 	            Mi cuenta
-              </button></div>
+              </button></a></div>
               <div class="col-md-2"><a href="./cerrarsesion.php"><button class="btn btn-outline-danger" style="color:white">Cerrar Sesión</button></a></div>
             </div>
             <div class="row justify-content-center" style="background-color:#C70039">

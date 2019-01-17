@@ -17,7 +17,7 @@ session_start();
       }
     </style>
   </head>
-  <body>
+  <body style="background-image:url('./imagenes/mercado3.jpg');background-repeat:no-repeat,repeat;background-size: cover;">
   <div class ="container-fluid" id="contenedor">
       <?php 
 include './cabecera.php';
@@ -28,13 +28,13 @@ include './cabecera.php';
         <form method="post">
           <fieldset>
             <legend>- Registro -</legend>
-            <span>Nombre:</span><input type="text" name="usuario" required><br>
-            <span>Apellidos:</span><input type="text" name="apellidos" required><br>
-            <span>Contraseña:</span><input type="password" name="passwd" required><br>
-            <span>confirmar Contraseña:</span><input type="password" name="passwd1" required><br>
-            <span>Dirección:</span><input type="text" name="direccion" required><br>
-            <span>email:</span><input type="email" name="email"><br>
-            <span>Tipo:</span><input type="text" name="tipo"><br>
+            <span style='color:white'>Nombre:</span><input type="text" name="usuario" required><br>
+            <span style='color:white'>Apellidos:</span><input type="text" name="apellidos" required><br>
+            <span style='color:white'>Contraseña:</span><input type="password" name="passwd" required><br>
+            <span style='color:white'>confirmar Contraseña:</span><input type="password" name="passwd1" required><br>
+            <span style='color:white'>Dirección:</span><input type="text" name="direccion" required><br>
+            <span style='color:white'>email:</span><input type="email" name="email"><br>
+            <span style='color:white'>Tipo:</span><input type="text" name="tipo"><br>
             <p><input type="submit" value="Crear"></p>
           </fieldset>
         </form>
@@ -73,8 +73,21 @@ include './cabecera.php';
           echo "ERROR al crear usuarios";
         }
       } else {
-        echo "Contraseñas con coinciden";
-
+        echo"<?php if (!isset(".$_POST['usuario'].")) : ?>";
+        echo"<form method='post'>";
+        echo"<fieldset>";
+        echo"<legend>- Registro -</legend>";
+        echo"<span style='color:white'>Nombre:</span><input type='text' name='usuario' value='".$usuario."' required><br>";
+        echo"<span style='color:white'>Apellidos:</span><input type='text' name='apellidos' value='".$apellidos."' required><br>";
+        echo"<span style='color:white'>Contraseña:</span><input type='password' name='passwd' required><img src='./imagenes/logo2.png' style='width:4%;height:4%'><br>";
+        echo"<span style='color:white'>confirmar Contraseña:</span><input type='password' name='passwd1' required><img src='./imagenes/logo2.png' style='width:4%;height:4%'><br>";
+        echo"<span style='color:white'>Dirección:</span><input type='text' name='direccion' value='".$direccion."' required><br>";
+        echo"<span style='color:white'>email:</span><input type='email' name='email' value='".$email."'><br>";
+        echo"<span style='color:white'>Tipo:</span><input type='text' name='tipo' value='".$tipo."'><br>";
+        echo"<p style='color:red;background-color:black;width:200px'>Las contraseñas no coincien</p>";
+        echo"<p><input type='submit' value='Crear'></p>";
+        echo"</fieldset>";
+        echo"</form>";
       }
 
         ?>

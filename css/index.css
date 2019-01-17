@@ -1,3 +1,6 @@
+* {
+	box-sizing: border-box;
+}
 
 .imagebox{
 overflow:hidden;
