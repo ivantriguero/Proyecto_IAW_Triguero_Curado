@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -19,8 +22,13 @@
   </head>
   <body>
   <div class ="container-fluid" id="contenedor">
-      <?php 
-include 'cabecera.php';
+      <?php
+      if (isset($_SESSION["user"])) {
+        include 'cabecerasesion.php';
+      } else {
+        include 'cabecera.php';
+      }  
+
 ?>
 
         <div class="container-fluid" style="padding:0px">
@@ -68,7 +76,9 @@ include 'cabecera.php';
     </div>
     </div>
     <div class="row justify-content-center" style="padding-top:10px">
-    <div class="col-md-2 imagebox" style="padding:0px"><div class="imagen1"><a href="#" class="e1">Comida</a></div></div>
+    <div class="col-md-3 imagebox" style="padding:0px"><div id="imagen1" class="imagen1"><a href="#" class="e1">Comida</a></div></div>
+    <div class="col-md-3 imagebox" style="padding:0px"><div id="imagen2" class="imagen1"><a href="#" class="e1">Bebidas</a></div></div>
+    <div class="col-md-3 imagebox" style="padding:0px"><div id="imagen3" class="imagen1"><a href="#" class="e1">Higiene</a></div></div>
     </div>
       </div>
       </div>

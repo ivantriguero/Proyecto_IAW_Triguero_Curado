@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -28,6 +31,7 @@ include './cabecera.php';
             <span>Nombre:</span><input type="text" name="usuario" required><br>
             <span>Apellidos:</span><input type="text" name="apellidos" required><br>
             <span>Contraseña:</span><input type="password" name="passwd" required><br>
+            <span>confirmar Contraseña:</span><input type="password" name="passwd1" required><br>
             <span>Dirección:</span><input type="text" name="direccion" required><br>
             <span>email:</span><input type="email" name="email"><br>
             <span>Tipo:</span><input type="text" name="tipo"><br>
@@ -54,8 +58,10 @@ include './cabecera.php';
         $email = $_POST["email"];
         $tipo = $_POST["tipo"];
 
+        if ($_POST["passwd"]==$_POST["passwd1"]) {
+
         $query = "INSERT INTO usuarios (nombre,passwd,apellidos,direccion,email,tipo)
-        VALUES ('$usuario','$passwd','$apellidos','$direccion','$email','$tipo')";
+        VALUES ('$usuario',md5('$passwd'),'$apellidos','$direccion','$email','$tipo')";
 
 
         if ($connection->query($query)) {
@@ -66,7 +72,10 @@ include './cabecera.php';
         } else {
           echo "ERROR al crear usuarios";
         }
+      } else {
+        echo "Contraseñas con coinciden";
 
+      }
 
         ?>
 
