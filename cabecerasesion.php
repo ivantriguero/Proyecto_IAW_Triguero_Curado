@@ -38,8 +38,7 @@ include './iniciosesion.php';
               <div class="col-md-4"><h1 style="font-size:450%;color:white">MercaPalacio</h1></div>
             </div>
             <div class="row" style="background-color:#C70039;border-top:2px solid white;color:white">
-              <div class="col-md-1">Productos</div>
-              <div class="col-md-1">MercaPalacio</div>
+            <div class="col-md-1"><a href="./productos.php"><button class="btn btn-outline-danger" style="color:white">Productos</button></a></div>
             </div>
 
 

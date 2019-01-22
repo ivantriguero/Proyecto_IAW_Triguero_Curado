@@ -17,7 +17,7 @@ session_start();
       }
     </style>
   </head>
-  <body style="background-image:url('./imagenes/mercado3.jpg');background-repeat:no-repeat,repeat;background-size: cover;">
+  <body>
   <div class ="container-fluid" id="contenedor">
       <?php 
 include './cabecera.php';
@@ -34,7 +34,9 @@ include './cabecera.php';
             <span style='color:white'>confirmar Contraseña:</span><input type="password" name="passwd1" required><br>
             <span style='color:white'>Dirección:</span><input type="text" name="direccion" required><br>
             <span style='color:white'>email:</span><input type="email" name="email"><br>
-            <span style='color:white'>Tipo:</span><input type="text" name="tipo"><br>
+            <span style='color:white'>Tipo:</span><input  type="checkbox" name="tipo" value="administrador"><span style='color:white'>Administrador</span>
+            <input type="checkbox" name="tipo" value="cliente"><span style='color:white'>Cliente</span>
+            <br>
             <p><input type="submit" value="Crear"></p>
           </fieldset>
         </form>
@@ -66,7 +68,8 @@ include './cabecera.php';
 
         if ($connection->query($query)) {
 
-        echo "<h1>Cliente creado correctamente</h1>";
+        echo "<h1 style='color:white'>Cliente creado correctamente</h1>";
+        echo "<a href='./index.php'><button class='btn btn-outline-danger' style='color:white'>Volver a la página principal</button></a>";
 
 
         } else {
@@ -83,7 +86,8 @@ include './cabecera.php';
         echo"<span style='color:white'>confirmar Contraseña:</span><input type='password' name='passwd1' required><img src='./imagenes/logo2.png' style='width:4%;height:4%'><br>";
         echo"<span style='color:white'>Dirección:</span><input type='text' name='direccion' value='".$direccion."' required><br>";
         echo"<span style='color:white'>email:</span><input type='email' name='email' value='".$email."'><br>";
-        echo"<span style='color:white'>Tipo:</span><input type='text' name='tipo' value='".$tipo."'><br>";
+        echo"<span style='color:white'>Tipo:</span><input  type='checkbox' name='tipo' value='administrador'><span style='color:white'>Administrador</span>";
+        echo"<input type='checkbox' name='tipo' value='cliente'><span style='color:white'>Cliente</span><br>";
         echo"<p style='color:red;background-color:black;width:200px'>Las contraseñas no coincien</p>";
         echo"<p><input type='submit' value='Crear'></p>";
         echo"</fieldset>";

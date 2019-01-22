@@ -24,6 +24,8 @@ session_start();
   <div class ="container-fluid" id="contenedor">
       <?php
         include 'cabecerasesion.php';
+        echo"<div class='row justify-content-center' id='cuenta'>";
+        echo"<div class='col-md-6'>";
 
         $connection = new mysqli("localhost", "root", "Admin2015", "mercado");
         $connection->set_charset("uft8");
@@ -33,27 +35,24 @@ session_start();
             exit();
          }
 
-        $query="SELECT * from usuarios where direccion 
-            like '%".$_POST['ciudad']."'";
+        $query="SELECT * from usuarios where email='".$_SESSION["user"]."'";
 
         if ($result = $connection->query($query)) {
 
            if ($result->num_rows==0)      {
-               echo "Ningún cliente de la ciudad: ".$_POST['ciudad'];
+               echo "ERROR";
            } else {
 
-                echo "<ul>";
+                echo "<table>";
                 while($obj = $result->fetch_object()) {
-                echo "<li>";
-                echo "Codigo:".$obj->CodCliente;
-                echo "Nombre: ".$obj->Nombre;
-                echo "Apellidos".$obj->Apellidos;
-                echo "DNI: ".$obj->DNI;
-                echo "Direccion: ".$obj->Direccion;
-                echo "Teléfono".$obj->Telefono;
-                echo "</li>";
+                echo "<tr><td>Codigo:</td><td>".$obj->cod_usuario."</td></tr>";
+                echo "<tr><td>Nombre:</td><td>".$obj->nombre."</td></tr>";
+                echo "<tr><td>Apellidos:</td><td>".$obj->apellidos."</td></tr>";
+                echo "<tr><td>Dirección:</td><td>".$obj->direccion."</td></tr>";
+                echo "<tr><td>email:</td><td>".$obj->email."</td></tr>";
+                echo "<tr><td>Tipo:</td><td>".$obj->tipo."</td></tr>";
                 }
-                echo "</ul>";
+                echo "</table>";
 
                 
             }
@@ -66,8 +65,7 @@ session_start();
       unset($connection);
 ?>
 
-<div class="row">
-      <div class="col-md-6">
+
       
       </div>
 </div>

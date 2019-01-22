@@ -21,26 +21,26 @@
   <body>
 
 <?php 
-include './iniciosesion.php';
 ?>
 
 
 
-            <div class="cabecera">
+
             <div class="row justify-content-end" style="border-bottom:2px solid white;background-color:#C70039;color:white">
-              <div class="col-md-1"><button type="button" class="btn btn-outline-danger" style="color:white" data-toggle="modal" data-target="#miModal">
-	            Iniciar sesión
-              </button></div>
-              <div class="col-md-2"><a href="./registro.php"><button class="btn btn-outline-danger" style="color:white">Registrarse</button></a></div>
+              <div class="col-md-1"><a href="./cuenta.php"><button type="button" class="btn btn-outline-danger" style="color:white">
+	            Mi cuenta
+              </button></a></div>
+              <div class="col-md-2"><a href="./cerrarsesion.php"><button class="btn btn-outline-danger" style="color:white">Cerrar Sesión</button></a></div>
             </div>
             <div class="row justify-content-center" style="background-color:#C70039">
               <div class="col-md-1"><img src="./imagenes/logo1.png" class="img-fluid"></div>
               <div class="col-md-4"><h1 style="font-size:450%;color:white">MercaPalacio</h1></div>
             </div>
             <div class="row" style="background-color:#C70039;border-top:2px solid white;color:white">
-              <div class="col-md-1"><a href="./productos.php"><button class="btn btn-outline-danger" style="color:white">Productos</button></a></div>
+            <div class="col-md-1"><a href="./productos.php"><button class="btn btn-outline-danger" style="color:white">Productos</button></a></div>
+            <div class="col-md-1"><a href="./administrar.php"><button class="btn btn-outline-danger" style="color:white">Administrar</button></a></div>
             </div>
-          </div>
+
 
 
       <?php 

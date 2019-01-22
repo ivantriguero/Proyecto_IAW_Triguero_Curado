@@ -1,5 +1,20 @@
 <?php
 session_start();
+if (isset($_SESSION["user"])) {
+$connection = new mysqli("localhost", "root", "Admin2015", "mercado");
+$connection->set_charset("uft8");
+
+if ($connection->connect_errno) {
+    printf("Connection failed: %s\n", $connection->connect_error);
+    exit();
+}
+
+  $query="select tipo from usuarios where
+  email='".$_SESSION["user"]."';";
+if ($result = $connection->query($query)) {}
+    $obj = $result->fetch_object();
+
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,63 +39,76 @@ session_start();
   <div class ="container-fluid" id="contenedor">
       <?php
       if (isset($_SESSION["user"])) {
+        if ($obj->tipo=="cliente"){
         include 'cabecerasesion.php';
-      } else {
+        $result->close();
+        unset($obj);
+        unset($connection);
+      } elseif ($obj->tipo=="administrador") {
+        include 'cabeceraadmi.php';
+        $result->close();
+        unset($obj);
+        unset($connection);
+      } }else {
         include 'cabecera.php';
-      }  
+      };
 
 ?>
 
         <div class="container-fluid" style="padding:0px">
-        <div class="row justify-content-center">
-          <div class="col-md-10" style="margin-top:10px">
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-          </ol>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img class="d-block w-100" src="./imagenes/mercado1.jpg" alt="First slide">
-              <div class="carousel-caption d-none d-md-block">
-             <h5>Clientes</h5>
-              <p>Gestiona tu cuenta y todos tus pedidos</p>
+          <div class="row justify-content-center">
+            <div class="col-md-10" style="margin-top:10px">
+              <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img class="d-block w-100" src="./imagenes/mercado1.jpg" alt="First slide">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>Clientes</h5>
+                      <p>Gestiona tu cuenta y todos tus pedidos</p>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img class="d-block w-100" src="./imagenes/mercado2.jpg" alt="Second slide">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>Productos</h5>
+                      <p>Selecciona entre todos nuestros productos para tu compra</p>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img class="d-block w-100" src="./imagenes/imagen1.jpg" alt="Third slide">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>Proveedores</h5>
+                      <p>Revisa y conoce a todos nuestros proveedores</p>
+                    </div>
+                  </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
             </div>
-            </div>
-          <div class="carousel-item">
-            <img class="d-block w-100" src="./imagenes/mercado2.jpg" alt="Second slide">
-            <div class="carousel-caption d-none d-md-block">
-    <h5>Productos</h5>
-    <p>Selecciona entre todos nuestros productos para tu compra</p>
-  </div>
           </div>
-          <div class="carousel-item">
-            <img class="d-block w-100" src="./imagenes/imagen1.jpg" alt="Third slide">
-            <div class="carousel-caption d-none d-md-block">
-    <h5>Proveedores</h5>
-    <p>Revisa y conoce a todos nuestros proveedores</p>
-  </div>
-          </div>
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
-       </div>
-    </div>
-    </div>
+
     <div class="row justify-content-center" style="padding-top:10px">
     <div class="col-md-3 imagebox" style="padding:0px"><div id="imagen1" class="imagen1"><a href="#" class="e1">Comida</a></div></div>
     <div class="col-md-3 imagebox" style="padding:0px"><div id="imagen2" class="imagen1"><a href="#" class="e1">Bebidas</a></div></div>
     <div class="col-md-3 imagebox" style="padding:0px"><div id="imagen3" class="imagen1"><a href="#" class="e1">Higiene</a></div></div>
     </div>
       </div>
+      </div>
+      <?php 
+      include 'pie.php';
+      ?>
       </div>
       <script>
     $(function() {

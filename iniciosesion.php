@@ -21,7 +21,7 @@
 
 <?php
 
-        if (isset($_POST["user"])) {
+        if (isset($_POST["email"])) {
 
           $connection = new mysqli("localhost", "root", "Admin2015", "mercado");
 
@@ -32,7 +32,7 @@
 
 
           $consulta="select * from usuarios where
-          nombre='".$_POST["user"]."' and passwd=md5('".$_POST["password"]."');";
+          email='".$_POST["email"]."' and passwd=md5('".$_POST["password"]."');";
 
 
           if ($result = $connection->query($consulta)) {
@@ -41,7 +41,7 @@
                 echo "LOGIN INVALIDO";
               } else {
 
-                $_SESSION["user"]=$_POST["user"];
+                $_SESSION["user"]=$_POST["email"];
                 $_SESSION["language"]="es";
 
                 header("Location: index.php");
@@ -65,8 +65,8 @@
 			<div class="modal-body">
             <form action="index.php" method="post">
 
-<p><input name="user" required></p>
-<p><input name="password" type="password" required></p>
+<p>email:<input name="email" required></p>
+<p>Contraseña<input name="password" type="password" required></p>
 <p><input type="submit" value="Log In"></p>
 
 </form>
