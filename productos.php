@@ -55,7 +55,7 @@ if ($result = $connection->query($query)) {}
 ?>
 
         <div class="container-fluid" style="padding:0px">
-       
+        <div class="row">
         <?php
         $connection = new mysqli("localhost", "root", "Admin2015", "mercado");
         $connection->set_charset("uft8");
@@ -67,21 +67,27 @@ if ($result = $connection->query($query)) {}
         
           $query="select * from productos;";
         if ($result = $connection->query($query)) {}
-          echo "<div class='card'>";
+
+
           while($obj = $result->fetch_object()) {
+            echo "<div class='col-md-2'>";
+            echo "<div class='card'>";
+            echo "<img class='card-img-top' alt='Card image cap' style='width:100%' src='data:image/png;base64,".base64_encode($obj->imagen)."'/>";
             echo "<div class='card-body'>";
             echo "<h5 class='card-title'>".$obj->descripcion."</h5>";
-            echo "<h6 class='card-subtitle mb-2 text-muted'>Card subtitle</h6>";
-            echo "<p class='card-text'>Some quick example text to build on the card title and make up the bulk of the cards content.</p>";
-            echo "<a href='#' class='card-link'>Card link</a>";
-            echo " <a href='#' class='card-link'>Another link</a>";
+            echo "Cantidad".$obj->stock."<br>";
+            echo "Precio".$obj->precio."€<br>";
+            echo "<a href='#' class='btn btn-primary'>Comprar</a>";
+            echo "</div>";
+            echo "</div>";
             echo "</div>";
           }
-          echo "</div>";
+
+
 
         ?>
 
-
+</div>
 
       </div>
       <script>

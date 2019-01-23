@@ -33,12 +33,10 @@ include './iniciosesion.php';
               </button></a></div>
               <div class="col-md-2"><a href="./cerrarsesion.php"><button class="btn btn-outline-danger" style="color:white">Cerrar Sesión</button></a></div>
             </div>
-            <div class="row justify-content-center" style="background-color:#C70039">
+            <div class="row justify-content-center" style="background-color:#C70039;height:77px">
               <div class="col-md-1"><img src="./imagenes/logo1.png" class="img-fluid"></div>
-              <div class="col-md-4"><h1 style="font-size:450%;color:white">MercaPalacio</h1></div>
-            </div>
-            <div class="row" style="background-color:#C70039;border-top:2px solid white;color:white">
-            <div class="col-md-1"><a href="./productos.php"><button class="btn btn-outline-danger" style="color:white">Productos</button></a></div>
+              <div class="col-md-4"><h1 style="font-size:270%;color:white">MercaPalacio</h1></div>
+              <div class="col-md-1"><a href="./productos.php"><button class="btn btn-outline-danger" style="color:white;height:100%">Productos</button></a></div>
             </div>
 
 

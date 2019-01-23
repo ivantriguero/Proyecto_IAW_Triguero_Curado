@@ -45,6 +45,7 @@ width:300px;
   -o-transition: all .5s ease;
   transition: all .5s ease;
 } 
+
 .imagen1:hover {  
   -webkit-transform: scale(1.2);
   -moz-transform: scale(1.2);

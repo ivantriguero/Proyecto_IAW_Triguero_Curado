@@ -26,7 +26,7 @@ create table productos(
     descripcion varchar(20),
     precio decimal(4,2),
 	cod_proveedor int,
-    imagen varchar(512),
+    imagen longblob,
     stock int,
     primary key(cod_producto),
     foreign key (cod_proveedor) references proveedores(cod_proveedor)

@@ -48,61 +48,16 @@ if ($result = $connection->query($query)) {}
 
       ?>
    
-   <div class="container-fluid" style="padding:0px">
+
           <div class="row" style="padding-top:10px">
           <div class="col-md-6">
-            <div class="col-md-12">
-              <a href="#"><button class="btn-danger btn-block btn-lg" style="height:100px">Administrar Clientes</button></a>
-              </div>
-
-
-
- 
-              <div class="col-md-12">
-                <a href="administrarproductos.php"><button class="btn-danger btn-block btn-lg" style="height:100px">Administrar Productos</button></a>
-              </div>
-
-
-            <div class="col-md-12">
-            <a href="#"><button class="btn-danger btn-block btn-lg" style="height:100px">Administrar Pedidos</button></a>
-            </div>
-          </div>
-          <div class="col-md-5 vcenter" id="inf">   
-      <?php
-      $query="SELECT * from usuarios where email='".$_SESSION["user"]."'";
-
-      if ($result = $connection->query($query)) {
-
-         if ($result->num_rows==0)      {
-             echo "ERROR";
-         } else {
-
-              echo "<table>";
-              while($obj = $result->fetch_object()) {
-              echo "<tr><td>Código:</td><td>".$obj->cod_usuario."</td></tr>";
-              echo "<tr><td>Nombre:</td><td>".$obj->nombre."</td></tr>";
-              echo "<tr><td>Apellidos:</td><td>".$obj->apellidos."</td></tr>";
-              echo "<tr><td>Dirección:</td><td>".$obj->direccion."</td></tr>";
-              echo "<tr><td>email:</td><td>".$obj->email."</td></tr>";
-              echo "<tr><td>Tipo:</td><td>".$obj->tipo."</td></tr>";
-              }
-              echo "</table>";
-
-              
-          }
-      } else {
-          echo "Error en consulta";
-      }
-
-    $result->close();
-    unset($obj);
-    unset($connection);
-
+<?php
+include 'insertarproductos.php'
 ?>
 
-
-              </div>
           </div>
+
+
         </div>
       <script>
     $(function() {
