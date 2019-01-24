@@ -51,12 +51,26 @@ if ($result = $connection->query($query)) {}
 
           <div class="row" style="padding-top:10px">
           <div class="col-md-6">
-<?php
+          <p>
+  <button class="btn-danger btn-block btn-lg" type="button" data-toggle="collapse" data-target="#myCollapsible" aria-expanded="false" aria-controls="myCollapsible">
+    Insertar Productos
+  </button>
+</p>
+<div class="collapse" id="myCollapsible">
+  <div class="card card-body" style="padding:0px">
+  <?php
 include 'insertarproductos.php'
 ?>
-
-          </div>
-
+  </div>
+</div>
+         </div>
+        <div class="col-md-6" style="padding-left:0px">
+        <p>
+        <button class="btn-danger btn-block btn-lg" type="button">
+Editar Productos
+  </button>
+  </p>
+        </div>
 
         </div>
       <script>

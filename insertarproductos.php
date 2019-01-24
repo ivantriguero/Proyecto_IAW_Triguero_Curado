@@ -20,7 +20,7 @@
   </head>
   <body>
   
-<div class="row justify-content-center" style="padding-top:10px">
+<div class="row justify-content-center">
       <div id="form" class="col-md-12">
       <?php if (!isset($_POST["desc"])) : ?>
         <form method="post" enctype="multipart/form-data">
@@ -88,7 +88,15 @@
                <p><input type='submit' value='Crear'></p>
              </fieldset>
            </form>";
-           echo "<p style='color:green;background-color:black'>Producto insertado correctamente</p>";      
+           echo "<p style='color:green;background-color:black'>Producto insertado correctamente</p>"; 
+           echo" <script>
+           $(function() {
+           $('#myCollapsible').collapse({
+            show: true
+          })
+       
+           });
+       </script>";     
           }
       } else {
           echo "Error en consulta";
@@ -107,6 +115,14 @@
       </fieldset>
     </form>";
      echo "<p style='color:red;background-color:black'>Esa Descripción ya existe</p>";
+    echo" <script>
+     $(function() {
+     $('#myCollapsible').collapse({
+      show: true
+    })
+ 
+     });
+ </script>";
  }
         ?>
 
