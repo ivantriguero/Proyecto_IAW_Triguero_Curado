@@ -75,8 +75,8 @@ if ($result = $connection->query($query)) {}
             echo "<img class='card-img-top' alt='Card image cap' style='width:100%' src='data:image/png;base64,".base64_encode($obj->imagen)."'/>";
             echo "<div class='card-body'>";
             echo "<h5 class='card-title'>".$obj->descripcion."</h5>";
-            echo "Cantidad".$obj->stock."<br>";
-            echo "Precio".$obj->precio."€<br>";
+            echo "Cantidad: ".$obj->stock."<br>";
+            echo "Precio: ".$obj->precio."€<br>";
             echo "<a href='#' class='btn btn-primary'>Comprar</a>";
             echo "</div>";
             echo "</div>";

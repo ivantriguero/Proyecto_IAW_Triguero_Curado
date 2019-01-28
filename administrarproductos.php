@@ -66,9 +66,9 @@ include 'insertarproductos.php'
          </div>
         <div class="col-md-6" style="padding-left:0px">
         <p>
-        <button class="btn-danger btn-block btn-lg" type="button">
-Editar Productos
-  </button>
+        <a href="editarproductos.php"><button class="btn-danger btn-block btn-lg" type="button">
+Editar o eliminar Productos
+  </button></a>
   </p>
         </div>
 

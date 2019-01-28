@@ -55,9 +55,6 @@ if ($result = $connection->query($query)) {}
               <a href="#"><button class="btn-danger btn-block btn-lg" style="height:100px">Administrar Clientes</button></a>
               </div>
 
-
-
- 
               <div class="col-md-12">
                 <a href="administrarproductos.php"><button class="btn-danger btn-block btn-lg" style="height:100px">Administrar Productos</button></a>
               </div>
