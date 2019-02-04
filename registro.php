@@ -42,9 +42,6 @@ session_start();
             <span style='color:white'>confirmar Contraseña:</span><input type="password" name="passwd1" required><br>
             <span style='color:white'>Dirección:</span><input type="text" name="direccion" required><br>
             <span style='color:white'>email:</span><input type="email" name="email"><br>
-            <span style='color:white'>Tipo:</span><input  type="radio" name="tipo" value="administrador" required><span style='color:white'>Administrador</span>
-            <input type="radio" name="tipo" value="cliente" required><span style='color:white'>Cliente</span>
-            <br>
             <p><input type="submit" value="Crear"></p>
           </fieldset>
         </form>
@@ -57,7 +54,6 @@ session_start();
         $apellidos = $_POST["apellidos"];
         $direccion = $_POST["direccion"];
         $email = $_POST["email"];
-        $tipo = $_POST["tipo"];
 
         $connection = new mysqli("localhost", "root", "Admin2015", "mercado",3316);
         $connection->set_charset("uft8");
@@ -76,7 +72,7 @@ session_start();
         if ($_POST["passwd"]==$_POST["passwd1"]) {
 
         $query = "INSERT INTO usuarios (nombre,passwd,apellidos,direccion,email,tipo)
-        VALUES ('$usuario',md5('$passwd'),'$apellidos','$direccion','$email','$tipo')";
+        VALUES ('$usuario',md5('$passwd'),'$apellidos','$direccion','$email','cliente')";
 
 
         if ($connection->query($query)) {
@@ -99,8 +95,6 @@ session_start();
         echo"<span style='color:white'>confirmar Contraseña:</span><input type='password' name='passwd1' required><img src='./imagenes/logo2.png' style='width:4%;height:4%'><br>";
         echo"<span style='color:white'>Dirección:</span><input type='text' name='direccion' value='".$direccion."' required><br>";
         echo"<span style='color:white'>email:</span><input type='email' name='email' value='".$email."'><br>";
-        echo"<span style='color:white'>Tipo:</span><input  type='radio' name='tipo' value='administrador' required><span style='color:white'>Administrador</span>";
-        echo"<input type='radio' name='tipo' value='cliente' required><span style='color:white'>Cliente</span><br>";
         echo"<p style='color:red;background-color:black;width:200px'>Las contraseñas no coincien</p>";
         echo"<p><input type='submit' value='Crear'></p>";
         echo"</fieldset>";
@@ -116,8 +110,6 @@ session_start();
         echo"<span style='color:white'>confirmar Contraseña:</span><input type='password' name='passwd1' required><br>";
         echo"<span style='color:white'>Dirección:</span><input type='text' name='direccion' value='".$direccion."' required><br>";
         echo"<span style='color:white'>email:</span><input type='email' name='email' value='".$email."'><img src='./imagenes/logo2.png' style='width:4%;height:4%'><br>";
-        echo"<span style='color:white'>Tipo:</span><input  type='radio' name='tipo' value='administrador' required><span style='color:white'>Administrador</span>";
-        echo"<input type='radio' name='tipo' value='cliente' required><span style='color:white'>Cliente</span><br>";
         echo"<p style='color:red;background-color:black;width:200px'>Este email ya esta en uso</p>";
         echo"<p><input type='submit' value='Crear'></p>";
         echo"</fieldset>";

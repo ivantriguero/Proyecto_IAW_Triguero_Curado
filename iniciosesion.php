@@ -38,7 +38,11 @@
           if ($result = $connection->query($consulta)) {
 
               if ($result->num_rows===0) {
-                echo "LOGIN INVALIDO";
+               echo"<script>
+            $(function() {
+                alert('Login incorrecto');
+             });
+              </script>";
               } else {
 
                 $_SESSION["user"]=$_POST["email"];

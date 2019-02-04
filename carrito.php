@@ -65,71 +65,24 @@ if ($result = $connection->query($query)) {}
             exit();
         }
         
-          $query="select * from productos;";
-
-         
-        if ($result = $connection->query($query)) {}
-
-          while($obj = $result->fetch_object()) {
-
-            if (!isset($_POST["cod"])) {
-              echo "<div class='col-md-2'>";
-            echo "<div class='card'>";
-            echo "<form method='post' enctype='multipart/form-data'>";
-            echo "<img class='card-img-top' alt='Card image cap' style='width:100%' src='data:image/png;base64,".base64_encode($obj->imagen)."'/>";
-            echo "<input type='file' name='imagen' style='color:transparent;'>";
-            echo "<div class='card-body'>";
-            echo "<input type='hidden' name='cod' value='".$obj->cod_producto."'>";
-            echo "<input type='text' name='desc' value='".$obj->descripcion."'>";
-            echo "Cantidad: <input type='number' name='stock' value='".$obj->stock."'><br>";
-            echo "Precio: <input type='number' name='precio' value='".$obj->precio."'>€<br>";
-            echo "<input type='submit' value='Editar' class='btn btn-primary'>";
-            echo "</div>";
-            echo "</form>";
-            echo "</div>";
-            echo "</div>";
-            }
-          }
-          if (array_key_exists('cod', $_POST)) {
-            if ($_FILES["imagen"]["size"]==0) {
-          $query="update productos set descripcion='".$_POST["desc"]."',precio='".$_POST["precio"]."',
-          stock='".$_POST["stock"]."' WHERE cod_producto='".$_POST["cod"]."'";
-            } else {
-              $file = addslashes(file_get_contents($_FILES['imagen']['tmp_name']));
-
-              $query="update productos set descripcion='".$_POST["desc"]."',precio='".$_POST["precio"]."',
-              stock='".$_POST["stock"]."',imagen='".$file."' WHERE cod_producto='".$_POST["cod"]."'";
-            }
-          if ($result = $connection->query($query)) {
-            $query="select * from productos;";
-
-         
+          $query="select * from productos where cod_producto='".$_GET["id"]."';";
         if ($result = $connection->query($query)) {}
 
 
           while($obj = $result->fetch_object()) {
-
             echo "<div class='col-md-2'>";
             echo "<div class='card'>";
-            echo "<form method='post' enctype='multipart/form-data'>";
             echo "<img class='card-img-top' alt='Card image cap' style='width:100%' src='data:image/png;base64,".base64_encode($obj->imagen)."'/>";
-            echo "<input type='file' name='imagen' style='color:transparent;'>";
             echo "<div class='card-body'>";
-            echo "<input type='hidden' name='cod' value='".$obj->cod_producto."'>";
-            echo "<input type='text' name='desc' value='".$obj->descripcion."'>";
-            echo "Cantidad: <input type='number' name='stock' value='".$obj->stock."'><br>";
-            echo "Precio: <input type='number' name='precio' value='".$obj->precio."'>€<br>";
-            echo "<input type='submit' value='Editar' class='btn btn-primary'>";
-            echo "</div>";
-            echo "</form>";
+            echo "<h5 class='card-title'>".$obj->descripcion."</h5>";
+            echo "Cantidad: ".$obj->stock."<br>";
+            echo "Precio: ".$obj->precio."€<br>";
             echo "</div>";
             echo "</div>";
+            echo "</div>";
+          }
 
-          }
-          } else {
-            echo "Error al actualizar los datos";
-          }
-        }
+
 
         ?>
 

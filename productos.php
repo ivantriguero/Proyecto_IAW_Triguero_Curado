@@ -77,7 +77,7 @@ if ($result = $connection->query($query)) {}
             echo "<h5 class='card-title'>".$obj->descripcion."</h5>";
             echo "Cantidad: ".$obj->stock."<br>";
             echo "Precio: ".$obj->precio."€<br>";
-            echo "<a href='#' class='btn btn-primary'>Comprar</a>";
+            echo "<a href='carrito.php?id=".$obj->cod_producto."' id='button' class='btn btn-primary'>Comprar</a>";
             echo "</div>";
             echo "</div>";
             echo "</div>";
@@ -92,9 +92,21 @@ if ($result = $connection->query($query)) {}
       </div>
       <script>
     $(function() {
+        $("#quantity").text(0);
+        $("#button").click(function(event) {
+          event.preventDefault();
+          $.ajax({
+            url: $(this).attr("href"),
+          }).done(function(data) {
+             if (data=="OK") {
+               $("#quantity").text(parseInt($("#quantity").text())+1);
+             } else {
+               alert("Something went wrong!!!"+data);
+             }
 
-
-    });
+          });
+        });
+     });
 </script>
   </body>
 </html>

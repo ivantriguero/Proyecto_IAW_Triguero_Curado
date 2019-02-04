@@ -55,7 +55,7 @@ if ($result = $connection->query($query)) {}
 ?>
 
         <div class="container-fluid" style="padding:0px">
-        <div class="row">
+        <div class="row justify-content-center">
         <?php
         $connection = new mysqli("localhost", "root", "Admin2015", "mercado");
         $connection->set_charset("uft8");
@@ -65,68 +65,54 @@ if ($result = $connection->query($query)) {}
             exit();
         }
         
-          $query="select * from productos;";
-
-         
+          $query="select * from usuarios where tipo='cliente';";
+          echo "<table>";
         if ($result = $connection->query($query)) {}
-
-          while($obj = $result->fetch_object()) {
-
             if (!isset($_POST["cod"])) {
-              echo "<div class='col-md-2'>";
-            echo "<div class='card'>";
-            echo "<form method='post' enctype='multipart/form-data'>";
-            echo "<img class='card-img-top' alt='Card image cap' style='width:100%' src='data:image/png;base64,".base64_encode($obj->imagen)."'/>";
-            echo "<input type='file' name='imagen' style='color:transparent;'>";
-            echo "<div class='card-body'>";
-            echo "<input type='hidden' name='cod' value='".$obj->cod_producto."'>";
-            echo "<input type='text' name='desc' value='".$obj->descripcion."'>";
-            echo "Cantidad: <input type='number' name='stock' value='".$obj->stock."'><br>";
-            echo "Precio: <input type='number' name='precio' value='".$obj->precio."'>€<br>";
-            echo "<input type='submit' value='Editar' class='btn btn-primary'>";
-            echo "</div>";
+            echo "<table>";
+            echo "<th>Nombre</th><th>Apellidos</th><th>Dirección</th><th>email</th>";
+          while($obj = $result->fetch_object()) {
+            echo "<tr>";
+            echo "<form method='post'>";
+            echo "<input type='hidden' name='cod' value='".$obj->cod_usuario."'>";
+            echo "<td><input type='text' name='nombre' value='".$obj->nombre."'></td>";
+            echo "<td><input type='text' name='apellidos' value='".$obj->apellidos."'></td>";
+            echo "<td><input type='text' name='direccion' value='".$obj->direccion."'></td>";
+            echo "<td><input type='text' name='email' value='".$obj->email."'></td>";
+            echo "<td><input type='submit' value='Editar' class='btn btn-danger'></td>";
             echo "</form>";
-            echo "</div>";
-            echo "</div>";
-            }
+        }
+            echo "</tr>";
           }
+          echo "</table>";
           if (array_key_exists('cod', $_POST)) {
-            if ($_FILES["imagen"]["size"]==0) {
-          $query="update productos set descripcion='".$_POST["desc"]."',precio='".$_POST["precio"]."',
-          stock='".$_POST["stock"]."' WHERE cod_producto='".$_POST["cod"]."'";
-            } else {
-              $file = addslashes(file_get_contents($_FILES['imagen']['tmp_name']));
-
-              $query="update productos set descripcion='".$_POST["desc"]."',precio='".$_POST["precio"]."',
-              stock='".$_POST["stock"]."',imagen='".$file."' WHERE cod_producto='".$_POST["cod"]."'";
-            }
+              $query="update usuarios set nombre='".$_POST["nombre"]."',apellidos='".$_POST["apellidos"]."',
+              direccion='".$_POST["direccion"]."',email='".$_POST["email"]."' WHERE cod_usuario='".$_POST["cod"]."'";
+            
           if ($result = $connection->query($query)) {
-            $query="select * from productos;";
+            $query="select * from usuarios where tipo='cliente';";
 
          
         if ($result = $connection->query($query)) {}
-
-
+            echo "<table>";
+            echo "<th>Nombre</th><th>Apellidos</th><th>Dirección</th><th>email</th>";
           while($obj = $result->fetch_object()) {
+            echo "<tr>";
+            echo "<input type='hidden' name='cod' value='".$obj->cod_usuario."'>";
+            echo "<td><input type='text' name='desc' value='".$obj->nombre."'></td>";
+            echo "<td><input type='text' name='stock' value='".$obj->apellidos."'></td>";
+            echo "<td><input type='text' name='precio' value='".$obj->direccion."'></td>";
+            echo "<td><input type='text' name='precio' value='".$obj->email."'></td>";
+            echo "<td><input type='submit' value='Editar' class='btn btn-danger'></td>";
+            }
+            echo "<td style='color:green'>cliente editado correctamente</td>";
+            
+            echo "</tr>";
+            echo "</table>";
+           
+        }
 
-            echo "<div class='col-md-2'>";
-            echo "<div class='card'>";
-            echo "<form method='post' enctype='multipart/form-data'>";
-            echo "<img class='card-img-top' alt='Card image cap' style='width:100%' src='data:image/png;base64,".base64_encode($obj->imagen)."'/>";
-            echo "<input type='file' name='imagen' style='color:transparent;'>";
-            echo "<div class='card-body'>";
-            echo "<input type='hidden' name='cod' value='".$obj->cod_producto."'>";
-            echo "<input type='text' name='desc' value='".$obj->descripcion."'>";
-            echo "Cantidad: <input type='number' name='stock' value='".$obj->stock."'><br>";
-            echo "Precio: <input type='number' name='precio' value='".$obj->precio."'>€<br>";
-            echo "<input type='submit' value='Editar' class='btn btn-primary'>";
-            echo "</div>";
-            echo "</form>";
-            echo "</div>";
-            echo "</div>";
-
-          }
-          } else {
+           else {
             echo "Error al actualizar los datos";
           }
         }

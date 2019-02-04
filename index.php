@@ -73,11 +73,13 @@ if ($result = $connection->query($query)) {}
                     </div>
                   </div>
                   <div class="carousel-item">
+                  <a href="./productos.php">
                     <img class="d-block w-100" src="./imagenes/mercado2.jpg" alt="Second slide">
                     <div class="carousel-caption d-none d-md-block">
                       <h5>Productos</h5>
                       <p>Selecciona entre todos nuestros productos para tu compra</p>
                     </div>
+                    </a>
                   </div>
                   <div class="carousel-item">
                     <img class="d-block w-100" src="./imagenes/imagen1.jpg" alt="Third slide">

@@ -52,7 +52,7 @@ if ($result = $connection->query($query)) {}
           <div class="row" style="padding-top:10px">
           <div class="col-md-6">
             <div class="col-md-12">
-              <a href="#"><button class="btn-danger btn-block btn-lg" style="height:100px">Administrar Clientes</button></a>
+              <a href="editarclientes.php"><button class="btn-danger btn-block btn-lg" style="height:100px">Administrar Clientes</button></a>
               </div>
 
               <div class="col-md-12">
