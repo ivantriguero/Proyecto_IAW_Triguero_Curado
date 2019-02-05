@@ -80,15 +80,22 @@ if ($result = $connection->query($query)) {}
             echo "<td><input type='text' name='direccion' value='".$obj->direccion."'></td>";
             echo "<td><input type='text' name='email' value='".$obj->email."'></td>";
             echo "<td><input type='submit' value='Editar' class='btn btn-danger'></td>";
+            echo "<form method='post'>";
+            echo "<input type='hidden' name='cod' value='".$obj->cod_usuario."'>";
+            echo "<td><input type='submit' name='eliminar' value='Eliminar' class='btn btn-danger'></td>";
+            echo "</form>";
             echo "</form>";
         }
             echo "</tr>";
           }
           echo "</table>";
           if (array_key_exists('cod', $_POST)) {
+            if (array_key_exists('eliminar', $_POST)) {
+              $query="delete from usuarios where cod_usuario='".$_POST["cod"]."'";
+            } else {
               $query="update usuarios set nombre='".$_POST["nombre"]."',apellidos='".$_POST["apellidos"]."',
               direccion='".$_POST["direccion"]."',email='".$_POST["email"]."' WHERE cod_usuario='".$_POST["cod"]."'";
-            
+            }
           if ($result = $connection->query($query)) {
             $query="select * from usuarios where tipo='cliente';";
 
@@ -98,15 +105,24 @@ if ($result = $connection->query($query)) {}
             echo "<th>Nombre</th><th>Apellidos</th><th>Dirección</th><th>email</th>";
           while($obj = $result->fetch_object()) {
             echo "<tr>";
+            echo "<form method='post'>";
             echo "<input type='hidden' name='cod' value='".$obj->cod_usuario."'>";
-            echo "<td><input type='text' name='desc' value='".$obj->nombre."'></td>";
-            echo "<td><input type='text' name='stock' value='".$obj->apellidos."'></td>";
-            echo "<td><input type='text' name='precio' value='".$obj->direccion."'></td>";
-            echo "<td><input type='text' name='precio' value='".$obj->email."'></td>";
+            echo "<td><input type='text' name='nombre' value='".$obj->nombre."'></td>";
+            echo "<td><input type='text' name='apellidos' value='".$obj->apellidos."'></td>";
+            echo "<td><input type='text' name='direccion' value='".$obj->direccion."'></td>";
+            echo "<td><input type='text' name='email' value='".$obj->email."'></td>";
             echo "<td><input type='submit' value='Editar' class='btn btn-danger'></td>";
+            echo "<form method='post'>";
+            echo "<input type='hidden' name='cod' value='".$obj->cod_usuario."'>";
+            echo "<td><input type='submit' name='eliminar' value='Eliminar' class='btn btn-danger'></td>";
+            echo "</form>";
+            echo "</form>";
             }
+            if (array_key_exists('eliminar', $_POST)) {
+              echo "<td style='color:red'>cliente eliminado correctamente</td>";
+            } else {
             echo "<td style='color:green'>cliente editado correctamente</td>";
-            
+            }
             echo "</tr>";
             echo "</table>";
            

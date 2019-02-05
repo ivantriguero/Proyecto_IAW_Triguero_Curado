@@ -1,11 +1,18 @@
-#cabecera{
-    background-color: #C70039;
-    height: 100px;
-}
-#registro:hover{
-    text-decoration:none;
-    color:black;
-    background-color: rgb(117, 0, 33)
+img {
+    height:100%;
 }
 
+div#cabecera{
+    height: 60px;
+    margin-bottom: 10px;
+    padding-top: 5px;
+}
 
+h1{
+    font-size:260%;
+    padding-bottom:5px;
+}
+
+button{
+    height:100%;
+}

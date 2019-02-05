@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+
     <style>
       span {
         width: 100px;
@@ -27,17 +30,18 @@ include './iniciosesion.php';
 
 
 
-            <div class="row justify-content-end" style="border-bottom:2px solid white;background-color:#C70039;color:white">
-              <div class="col-md-1"><a href="./cuenta.php"><button type="button" class="btn btn-outline-danger" style="color:white">
-	            Mi cuenta
-              </button></a></div>
-              <div class="col-md-2"><a href="./cerrarsesion.php"><button class="btn btn-outline-danger" style="color:white">Cerrar Sesión</button></a></div>
+            <div class="row" id="cabecera">
+              <div class="col-md-1"><img src="./imagenes/logo1.png"></div>
+              <div class="col-md-4"><h1>MercaPalacio</h1></div>
+              <div class="col-md-6">
+              <div class="row justify-content-end">
+              <div class="col-md-2"><a href="./index.php"><button class="btn btn-outline-danger">Inicio</button></a></div>
+              <div class="col-md-2"><a href="./productos.php"><button class="btn btn-outline-danger">Productos</button></a></div>
+              <div class="col-md-2"><a href="./cuenta.php"><button type="button" class="btn btn-outline-danger">Mi cuenta</button></a></div>
+              <div class="col-md-1"><a href="./cerrarsesion.php"><button class="btn btn-outline-danger"><i class="fas fa-sign-out-alt fa-3x"></i></button></a></div>
+              <div class="col-md-2"></div>
+              </div>
             </div>
-            <div class="row justify-content-center" style="background-color:#C70039">
-              <div class="col-md-1"><img src="./imagenes/logo1.png" class="img-fluid"></div>
-              <div class="col-md-4"><h1 style="font-size:270%;color:white">MercaPalacio</h1></div>
-              <div class="col-md-1"><a href="./index.php"><button class="btn btn-outline-danger" style="color:white;height:100%">Inicio</button></a></div>
-              <div class="col-md-1"><a href="./productos.php"><button class="btn btn-outline-danger" style="color:white;height:100%">Productos</button></a></div>
             </div>
 
 

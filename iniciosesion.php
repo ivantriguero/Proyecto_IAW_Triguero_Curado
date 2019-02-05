@@ -69,9 +69,10 @@
 			<div class="modal-body">
             <form action="index.php" method="post">
 
-<p>email:<input name="email" required></p>
+<p>Email:<input name="email" required></p>
 <p>Contraseña<input name="password" type="password" required></p>
-<p><input type="submit" value="Log In"></p>
+<p><input type="submit" value="Iniciar sesión"></p>
+<p>¿Aún no eres cliente?<a href="./registro.php">Regístrate</a></p>
 
 </form>
 			</div>

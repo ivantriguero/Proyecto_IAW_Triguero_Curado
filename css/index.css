@@ -2,7 +2,9 @@
 	box-sizing: border-box;
 }
 
-
+div#contenedor{
+    padding: 0px;
+}
 
 .imagebox{
 overflow:hidden;
@@ -113,3 +115,16 @@ width:300px;
     border-radius: 10px;
 }
 
+div.carousel-item{
+    height:650px;
+    width:100%;
+}
+
+div.carousel-caption{
+    margin-bottom: 230px;
+
+}
+
+h5 div.carousel-caption{
+    font-size: 500%;
+}

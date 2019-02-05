@@ -57,7 +57,7 @@ if ($result = $connection->query($query)) {}
 
         <div class="container-fluid" style="padding:0px">
           <div class="row justify-content-center">
-            <div class="col-md-10" style="margin-top:10px">
+            <div class="col-md-12" style="padding:0px">
               <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                   <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -65,24 +65,23 @@ if ($result = $connection->query($query)) {}
                   <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img class="d-block w-100" src="./imagenes/mercado1.jpg" alt="First slide">
+                  <div class="carousel-item active" style="background-image:url('./imagenes/mercado5.jpg');background-attachment:fixed;background-repeat: no-repeat;background-size: cover;">
                     <div class="carousel-caption d-none d-md-block">
-                      <h5>Clientes</h5>
-                      <p>Gestiona tu cuenta y todos tus pedidos</p>
+                      <h1>Productos</h1>
+                      <h5>Selecciona entre todos nuestros productos para tu compra</h5>
                     </div>
                   </div>
                   <div class="carousel-item">
                   <a href="./productos.php">
-                    <img class="d-block w-100" src="./imagenes/mercado2.jpg" alt="Second slide">
+                    <img class="d-block w-100" src="./imagenes/mercado1.jpg" alt="Second slide">
                     <div class="carousel-caption d-none d-md-block">
-                      <h5>Productos</h5>
-                      <p>Selecciona entre todos nuestros productos para tu compra</p>
+                      <h5>Clientes</h5>
+                      <p>Gestiona tu cuenta y todos tus pedidos</p>
                     </div>
                     </a>
                   </div>
                   <div class="carousel-item">
-                    <img class="d-block w-100" src="./imagenes/imagen1.jpg" alt="Third slide">
+                    
                     <div class="carousel-caption d-none d-md-block">
                       <h5>Proveedores</h5>
                       <p>Revisa y conoce a todos nuestros proveedores</p>
@@ -108,9 +107,6 @@ if ($result = $connection->query($query)) {}
     </div>
       </div>
       </div>
-      <?php 
-      include 'pie.php';
-      ?>
       </div>
       <script>
     $(function() {
