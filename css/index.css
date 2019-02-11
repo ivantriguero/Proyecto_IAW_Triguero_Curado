@@ -1,130 +1,46 @@
-* {
-	box-sizing: border-box;
-}
-
-div#contenedor{
-    padding: 0px;
-}
-
-.imagebox{
-overflow:hidden;
-height: 450px;
-width:300px;
-  }
-
-#imagen1 {
-	width:300px;
-    height:450px;
-	background-image: url("../imagenes/comida1.jpg");
-	background-position:center;
-  -webkit-transition: all .5s ease;
-  -moz-transition: all .5s ease;
-  -ms-transition: all .5s ease;
-  -o-transition: all .5s ease;
-  transition: all .5s ease;
-} 
-
-#imagen2 {
-	width:300px;
-    height:450px;
-	background-image: url("../imagenes/bebida.jpg");
-	background-position:center;
-  -webkit-transition: all .5s ease;
-  -moz-transition: all .5s ease;
-  -ms-transition: all .5s ease;
-  -o-transition: all .5s ease;
-  transition: all .5s ease;
-} 
-
-#imagen3 {
-	width:300px;
-  height:450px;
-	background-image: url("../imagenes/higiene.jpg");
-	background-position:center;
-  -webkit-transition: all .5s ease;
-  -moz-transition: all .5s ease;
-  -ms-transition: all .5s ease;
-  -o-transition: all .5s ease;
-  transition: all .5s ease;
-} 
-
-.imagen1:hover {  
-  -webkit-transform: scale(1.2);
-  -moz-transform: scale(1.2);
-  -o-transform: scale(1.2);
-  -ms-transform: scale(1.2); /* IE 9 */ 
-  transform: scale(1.2);
-} 
-
-.e1{
-    display: none;
-    font-size: 35px;
-    color: #ffffff;
-    font-family: sans-serif;
-    text-align: center;
-    margin: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    height: 50px;
-    cursor: pointer;
-    text-decoration: none;
+div#c1{
+    background-image:url('../imagenes/mercado5.jpg');background-attachment:fixed;background-repeat: no-repeat;background-size: cover;height:700px;
     
 }
 
-.imagebox:hover .imagen1, .imagebox:focus .imagen1 {
-    -ms-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    -webkit-transform: scale(1.2);
-    -o-transform: scale(1.2);
-    transform: scale(1.2);
-}
-
-.imagebox:hover .imagen1:before, .imagebox:focus .imagen1:before {
-    display: block;
-}
-
-.imagebox:hover .e1, .imagebox:focus .e1 {
-    display: block;
-    text-decoration: none;
-    color: white
-}
-
-.imagen1:before {
-    content: "";
-    display: none;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: rgba(52,73,94,0.75);
-}
-
-@media screen and (max-width: 960px) {
-    .parent {width: 100%; margin: 20px 0px}
-		.wrapper {padding: 20px 20px;}
-}
-
-#cuenta{
-    margin-top: 20px;
-    background-color: #C70039;
+div#c1 h1{
     color: white;
-    border-radius: 10px;
+    font-size:1000%;
+    margin-top: 25%;
 }
 
-div.carousel-item{
-    height:650px;
-    width:100%;
+div#c1 h2{
+    color: white;
+    font-size:200%;
 }
 
-div.carousel-caption{
-    margin-bottom: 230px;
 
+div#p1{
+    margin-top: 2%;
 }
 
-h5 div.carousel-caption{
-    font-size: 500%;
+div#cabecera1{
+border-bottom: 2px solid black;
+}
+
+button.b2{
+    margin-left:35%;
+    border-radius: 30px;
+    width: 25%;
+    background-color: white;
+    color: black;
+    font-size: 150%;
+    height: 7%;
+    border:5px solid white;
+    transition: 0.5s;
+}
+
+button.b2:hover{
+    border-radius: 30px;
+    width: 25%;
+    background-color: transparent;
+    color: white;
+    font-size: 150%;
+    height: 7%;
+    border:5px solid white;
 }

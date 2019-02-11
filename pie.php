@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MercaPalacio</title>
     <link rel="shortcut icon" href="./imagenes/logo1.png" />
-    <link rel="stylesheet" type="text/css" href="./css/cabecera.css">
+    <link rel="stylesheet" type="text/css" href="./css/pie.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -20,9 +20,9 @@
   </head>
   <body>
 
-            <div class="row justify-content-center" style="background-color:#C70039">
-              <div class="col-md-1"><img src="./imagenes/logo1.png" class="img-fluid"></div>
-              <div class="col-md-4"><h1 style="font-size:450%;color:white">MercaPalacio</h1></div>
+            <div id="pie" class="row justify-content-center">
+              <div class="col-md-3"><h1>MercaPalacio</h1><p>Lorem ipsum dolor sit amet consectetur adipiscing elit, scelerisque sociis class gravida ac malesuada neque cubilia, pulvinar viverra tellus ullamcorper tincidunt in. Vulputate nibh sodales laoreet auctor senectus interdum imperdiet a condimentum, venenatis primis euismod eros varius luctus aliquet urna porttitor blandit, quis mi feugiat tortor maecenas phasellus etiam fames.</p></div>
+              <div class="col-md-3"><h1>Contacto</h1><p>Lorem ipsum dolor sit amet consectetur adipiscing elit, scelerisque sociis class gravida ac malesuada neque cubilia, pulvinar viverra tellus ullamcorper tincidunt in. Vulputate nibh sodales laoreet auctor senectus interdum imperdiet a condimentum, venenatis primis euismod eros varius luctus aliquet urna porttitor blandit, quis mi feugiat tortor maecenas phasellus etiam fames.</p></div>
             </div>
             
       <?php 

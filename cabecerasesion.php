@@ -35,10 +35,10 @@ include './iniciosesion.php';
               <div class="col-md-4"><h1>MercaPalacio</h1></div>
               <div class="col-md-6">
               <div class="row justify-content-end">
-              <div class="col-md-2"><a href="./index.php"><button class="btn btn-outline-danger">Inicio</button></a></div>
-              <div class="col-md-2"><a href="./productos.php"><button class="btn btn-outline-danger">Productos</button></a></div>
-              <div class="col-md-2"><a href="./cuenta.php"><button type="button" class="btn btn-outline-danger">Mi cuenta</button></a></div>
-              <div class="col-md-1"><a href="./cerrarsesion.php"><button class="btn btn-outline-danger"><i class="fas fa-sign-out-alt fa-3x"></i></button></a></div>
+              <div class="col-md-2"><a href="./index.php"><button class="b1 btn btn-outline-danger">Inicio</button></a></div>
+              <div class="col-md-2"><a href="./productos.php"><button class="b1 btn btn-outline-danger">Productos</button></a></div>
+              <div class="col-md-2"><a href="./cuenta.php"><button type="button" class="b1 btn btn-outline-danger">Mi cuenta</button></a></div>
+              <div class="col-md-1"><a href="./cerrarsesion.php"><button class="b1 btn btn-outline-danger"><i class="fas fa-sign-out-alt fa-3x"></i></button></a></div>
               <div class="col-md-2"></div>
               </div>
             </div>

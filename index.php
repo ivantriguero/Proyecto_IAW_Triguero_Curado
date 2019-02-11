@@ -37,7 +37,8 @@ if ($result = $connection->query($query)) {}
   </head>
   <body>
   <div class ="container-fluid" id="contenedor">
-      <?php
+      
+<?php
       if (isset($_SESSION["user"])) {
         if ($obj->tipo=="cliente"){
         include 'cabecerasesion.php';
@@ -55,65 +56,34 @@ if ($result = $connection->query($query)) {}
 
 ?>
 
-        <div class="container-fluid" style="padding:0px">
-          <div class="row justify-content-center">
-            <div class="col-md-12" style="padding:0px">
-              <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                  <div class="carousel-item active" style="background-image:url('./imagenes/mercado5.jpg');background-attachment:fixed;background-repeat: no-repeat;background-size: cover;">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h1>Productos</h1>
-                      <h5>Selecciona entre todos nuestros productos para tu compra</h5>
-                    </div>
-                  </div>
-                  <div class="carousel-item">
-                  <a href="./productos.php">
-                    <img class="d-block w-100" src="./imagenes/mercado1.jpg" alt="Second slide">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>Clientes</h5>
-                      <p>Gestiona tu cuenta y todos tus pedidos</p>
-                    </div>
-                    </a>
-                  </div>
-                  <div class="carousel-item">
-                    
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>Proveedores</h5>
-                      <p>Revisa y conoce a todos nuestros proveedores</p>
-                    </div>
-                  </div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Next</span>
-                </a>
-              </div>
-            </div>
-          </div>
-
-    <div class="row justify-content-center" style="padding-top:10px">
-    <div class="col-md-3 imagebox" style="padding:0px"><div id="imagen1" class="imagen1"><a href="#" class="e1">Comida</a></div></div>
-    <div class="col-md-3 imagebox" style="padding:0px"><div id="imagen2" class="imagen1"><a href="#" class="e1">Bebidas</a></div></div>
-    <div class="col-md-3 imagebox" style="padding:0px"><div id="imagen3" class="imagen1"><a href="#" class="e1">Higiene</a></div></div>
+  <div class="row justify-content-center" id="c1" >
+    <div class="col-md-6">
+          <h1>Productos</h1>
+          <h2>Selecciona entre todos nuestros productos para tu compra</h2>
+          <button class="b2">Saber más</button>
     </div>
-      </div>
-      </div>
-      </div>
-      <script>
-    $(function() {
-      $('.carousel').carousel()
+  </div>
 
+  <div class="row justify-content-center">
+    <div id="cabecera1" class="col-md-11">
+      <h1>Mercapalacio</h1>
+    </div>
+  </div>
 
-    });
-</script>
-  </body>
+  <div id="p1" class="row">
+    <div id="imagen1" class="col-md-6">
+      <img class="img-fluid" src="./imagenes/mercado.jpg" alt="">
+    </div>
+    <div class="col-md-6">
+    Lorem ipsum dolor sit amet consectetur adipiscing elit consequat nostra suscipit, class magnis quis senectus lacinia dui convallis placerat netus iaculis, laoreet posuere vulputate interdum massa mollis aliquet vitae sociosqu. Platea per euismod integer facilisi nam aptent morbi, eu massa potenti diam enim cum cubilia, sed sem scelerisque purus ridiculus magnis. Inceptos quis augue litora magnis eu placerat, vivamus natoque varius nostra velit cursus, sem suscipit turpis tempus blandit. Facilisis orci volutpat pellentesque rhoncus mi nisi commodo enim quis dui, nunc penatibus feugiat congue dapibus ultrices cum tempor habitasse.
+
+Mi dictum id nibh nunc vulputate sollicitudin class eu molestie vitae lacinia cubilia elementum sagittis egestas convallis facilisis, luctus curabitur sed pharetra est ut leo nisl tempor sem fringilla venenatis curae nec himenaeos vivamus. Ridiculus vehicula montes sagittis imperdiet cum morbi nulla sollicitudin, mi maecenas cras habitasse hendrerit lacus posuere taciti feugiat, faucibus ullamcorper interdum potenti dapibus urna quam. Ligula suscipit curabitur cras pellentesque integer netus imperdiet magna montes, lobortis est torquent leo molestie cursus blandit elementum, nulla vitae et posuere nisl dis in sollicitudin.
+
+Luctus auctor natoque fusce egestas leo rhoncus eleifend donec faucibus, ad class ridiculus cursus per sodales vivamus habitasse, dis nullam volutpat nisl venenatis feugiat rutrum libero. Aptent eros pellentesque cursus platea interdum torquent semper sociis luctus habitasse, potenti fringilla dui condimentum faucibus risus ligula congue turpis, iaculis dis lobortis aenean curabitur hendrerit euismod nulla ut. Nostra eros laoreet posuere risus sem enim sociosqu aliquet, nibh donec urna consequat condimentum curabitur lacinia scelerisque habitasse, luctus lacus tellus auctor himenaeos elementum convallis. Metus hendrerit dapibus leo potenti curae iaculis convallis, interdum nec habitasse imperdiet placerat auctor tellus, taciti velit magnis justo consequat ac.    </div>
+  </div>
+  <?php 
+  include 'pie.php';
+  ?>
+  </div>
+</body>
 </html>
