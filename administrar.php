@@ -23,6 +23,7 @@ if ($result = $connection->query($query)) {}
     <title>MercaPalacio</title>
     <link rel="shortcut icon" href="./imagenes/logo1.png" />
     <link rel="stylesheet" type="text/css" href="./css/administrar.css">
+    <link rel="stylesheet" type="text/css" href="./css/index.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
@@ -47,7 +48,11 @@ if ($result = $connection->query($query)) {}
       };
 
       ?>
-   
+     <div class="row justify-content-center" id="c2" >
+    <div class="col-md-6">
+          <h1>Administrar</h1>
+    </div>
+  </div>
    <div class="container-fluid" style="padding:0px">
           <div class="row" style="padding-top:10px">
           <div class="col-md-6">

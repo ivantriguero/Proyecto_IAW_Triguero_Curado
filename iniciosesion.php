@@ -6,11 +6,13 @@
     <title>MercaPalacio</title>
     <link rel="shortcut icon" href="./imagenes/logo1.png" />
     <link rel="stylesheet" type="text/css" href="./css/cabecera.css">
+    <link rel="stylesheet" type="text/css" href="./css/iniciosesion.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <style>
       span {
         width: 100px;
@@ -60,7 +62,7 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-      <h4 class="modal-title" id="myModalLabel">Iniciar Sesión</h4>
+      <h4>Iniciar Sesión</h4>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
 				</button>
@@ -69,9 +71,9 @@
 			<div class="modal-body">
             <form action="index.php" method="post">
 
-<p>Email: <input name="email" required></p>
-<p>Contraseña: <input name="password" type="password" required></p>
-<p><input type="submit" value="Iniciar sesión"></p>
+<p><i class="far fa-envelope"></i> <input class="text" placeholder="Email" name="email" required></p>
+<p><i class="fas fa-key"></i> <input class="text" placeholder="Contraseña" name="password" type="password" required></p>
+<p><input class="ic" type="submit" value="Iniciar sesión"></p>
 <p>¿Aún no eres cliente?<a href="./registro.php">Regístrate</a></p>
 
 </form>

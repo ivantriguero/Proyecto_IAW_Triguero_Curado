@@ -9,6 +9,9 @@ session_start();
     <title>MercaPalacio</title>
     <link rel="shortcut icon" href="./imagenes/logo1.png" />
     <link rel="stylesheet" type="text/css" href="./css/registro.css">
+    <link rel="stylesheet" type="text/css" href="./css/index.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -22,14 +25,28 @@ session_start();
     </style>
   </head>
   <body>
-  <div class ="container-fluid" id="contenedor">
+  <?php
+      if (isset($_SESSION["user"])) {
+        if ($obj->tipo=="cliente"){
+        include 'cabecerasesion.php';
+        $result->close();
+        unset($obj);
+        unset($connection);
+      } elseif ($obj->tipo=="administrador") {
+        include 'cabeceraadmi.php';
+        $result->close();
+        unset($obj);
+        unset($connection);
+      } }else {
+        include 'cabecera.php';
+      };
 
-            <div class="row justify-content-center" style="background-color:#C70039;height:77px">
-              <div class="col-md-1"><img src="./imagenes/logo1.png" class="img-fluid"></div>
-              <div class="col-md-4"><h1 style="font-size:270%;color:white">MercaPalacio</h1></div>
-              <div class="col-md-1"><a href="./productos.php"><button class="btn btn-outline-danger" style="color:white;height:100%">Productos</button></a></div>
-
-            </div>
+?>
+<div class="row justify-content-center" id="c2" >
+    <div class="col-md-6">
+          <h1>Registro</h1>
+    </div>
+  </div>
 <div class="row justify-content-center" style="padding-top:10px">
       <div id="form" class="col-md-5">
       <?php if (!isset($_POST["usuario"])) : ?>

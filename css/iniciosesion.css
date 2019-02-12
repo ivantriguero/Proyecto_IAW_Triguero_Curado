@@ -1,0 +1,21 @@
+div.modal-header{
+    border:0px;
+}
+
+input.text{
+    border:0px;
+    border-bottom: 1px solid gray;
+    width: 90%;
+}
+div.modal-content{
+    width: 70%;
+}
+
+input.ic{
+    width: 100%;
+    background-color: #dc3545;
+    border: 0px;
+    color: white;
+    font-size:170%;
+    border-radius: 25px;
+}

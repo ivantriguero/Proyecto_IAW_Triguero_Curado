@@ -23,7 +23,6 @@ if ($result = $connection->query($query)) {}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MercaPalacio</title>
     <link rel="shortcut icon" href="./imagenes/logo1.png" />
-    <link rel="stylesheet" type="text/css" href="./css/index.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
@@ -55,7 +54,7 @@ if ($result = $connection->query($query)) {}
 ?>
 
         <div class="container-fluid" style="padding:0px">
-        <div class="row justify-content-center">
+
         <?php
         $connection = new mysqli("localhost", "root", "Admin2015", "mercado");
         $connection->set_charset("uft8");
@@ -66,27 +65,27 @@ if ($result = $connection->query($query)) {}
         }
         
           $query="select * from usuarios where tipo='cliente';";
-          echo "<table>";
+
         if ($result = $connection->query($query)) {}
             if (!isset($_POST["cod"])) {
-            echo "<table>";
-            echo "<th>Nombre</th><th>Apellidos</th><th>Dirección</th><th>email</th>";
+
           while($obj = $result->fetch_object()) {
-            echo "<tr>";
+            echo "<div class='row'>";
             echo "<form method='post'>";
             echo "<input type='hidden' name='cod' value='".$obj->cod_usuario."'>";
-            echo "<td><input type='text' name='nombre' value='".$obj->nombre."'></td>";
-            echo "<td><input type='text' name='apellidos' value='".$obj->apellidos."'></td>";
-            echo "<td><input type='text' name='direccion' value='".$obj->direccion."'></td>";
-            echo "<td><input type='text' name='email' value='".$obj->email."'></td>";
-            echo "<td><input type='submit' value='Editar' class='btn btn-danger'></td>";
+            echo "<div class='col-md-2'><input type='text' name='nombre' value='".$obj->nombre."'></div>";
+            echo "<div class='col-md-2'><input type='text' name='apellidos' value='".$obj->apellidos."'></div>";
+            echo "<div class='col-md-2'><input type='text' name='direccion' value='".$obj->direccion."'></div>";
+            echo "<div class='col-md-2'><input type='text' name='email' value='".$obj->email."'></div>";
+            echo "<div class='col-md-1'><input type='submit' value='Editar' class='btn btn-danger'></div>";
+            echo "</form>";
             echo "<form method='post'>";
             echo "<input type='hidden' name='cod' value='".$obj->cod_usuario."'>";
-            echo "<td><input type='submit' name='eliminar' value='Eliminar' class='btn btn-danger'></td>";
+            echo "<div class='col-md-1'><input type='submit' name='eliminar' value='Eliminar' class='btn btn-danger'></div>";
             echo "</form>";
-            echo "</form>";
+            echo "</div>";
         }
-            echo "</tr>";
+
           }
           echo "</table>";
           if (array_key_exists('cod', $_POST)) {
@@ -101,28 +100,27 @@ if ($result = $connection->query($query)) {}
 
          
         if ($result = $connection->query($query)) {}
-            echo "<table>";
-            echo "<th>Nombre</th><th>Apellidos</th><th>Dirección</th><th>email</th>";
+          if (array_key_exists('eliminar', $_POST)) {
+            echo "<div class='col-md-2'- style='color:red'>cliente eliminado correctamente</div>";
+          } else {
+          echo "<div class='col-md-2'- style='color:green'>cliente editado correctamente</div>";
+          }
           while($obj = $result->fetch_object()) {
-            echo "<tr>";
+  
             echo "<form method='post'>";
             echo "<input type='hidden' name='cod' value='".$obj->cod_usuario."'>";
-            echo "<td><input type='text' name='nombre' value='".$obj->nombre."'></td>";
-            echo "<td><input type='text' name='apellidos' value='".$obj->apellidos."'></td>";
-            echo "<td><input type='text' name='direccion' value='".$obj->direccion."'></td>";
-            echo "<td><input type='text' name='email' value='".$obj->email."'></td>";
-            echo "<td><input type='submit' value='Editar' class='btn btn-danger'></td>";
+            echo "<div class='col-md-2'><input type='text' name='nombre' value='".$obj->nombre."'></div>";
+            echo "<div class='col-md-2'><input type='text' name='apellidos' value='".$obj->apellidos."'></div>";
+            echo "<div class='col-md-2'><input type='text' name='direccion' value='".$obj->direccion."'></div>";
+            echo "<div class='col-md-2'><input type='text' name='email' value='".$obj->email."'></div>";
+            echo "<div class='col-md-2'><input type='submit' value='Editar' class='btn btn-danger'></div>";
             echo "<form method='post'>";
             echo "<input type='hidden' name='cod' value='".$obj->cod_usuario."'>";
-            echo "<td><input type='submit' name='eliminar' value='Eliminar' class='btn btn-danger'></td>";
+            echo "<div class='col-md-2'><input type='submit' name='eliminar' value='Eliminar' class='btn btn-danger'></div>";
             echo "</form>";
             echo "</form>";
             }
-            if (array_key_exists('eliminar', $_POST)) {
-              echo "<td style='color:red'>cliente eliminado correctamente</td>";
-            } else {
-            echo "<td style='color:green'>cliente editado correctamente</td>";
-            }
+
             echo "</tr>";
             echo "</table>";
            
@@ -135,7 +133,6 @@ if ($result = $connection->query($query)) {}
 
         ?>
 
-</div>
 
       </div>
       <script>

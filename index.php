@@ -60,7 +60,7 @@ if ($result = $connection->query($query)) {}
     <div class="col-md-6">
           <h1>Productos</h1>
           <h2>Selecciona entre todos nuestros productos para tu compra</h2>
-          <button class="b2">Saber más</button>
+          <a href="./productos.php"><button class="b2">Saber más</button></a>
     </div>
   </div>
 

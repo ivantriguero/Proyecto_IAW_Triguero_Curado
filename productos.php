@@ -53,7 +53,11 @@ if ($result = $connection->query($query)) {}
         include 'cabecera.php';
       };
 ?>
-
+<div class="row justify-content-center" id="c2" >
+    <div class="col-md-6">
+          <h1>Productos</h1>
+    </div>
+  </div>
         <div class="container-fluid" style="padding:0px">
         <div class="row">
         <?php
