@@ -9,6 +9,7 @@ session_start();
     <title>MercaPalacio</title>
     <link rel="shortcut icon" href="./imagenes/logo1.png" />
     <link rel="stylesheet" type="text/css" href="./css/registro.css">
+    <link rel="stylesheet" type="text/css" href="./css/cabecera.css">
     <link rel="stylesheet" type="text/css" href="./css/index.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
@@ -25,43 +26,59 @@ session_start();
     </style>
   </head>
   <body>
-  <?php
-      if (isset($_SESSION["user"])) {
-        if ($obj->tipo=="cliente"){
-        include 'cabecerasesion.php';
-        $result->close();
-        unset($obj);
-        unset($connection);
-      } elseif ($obj->tipo=="administrador") {
-        include 'cabeceraadmi.php';
-        $result->close();
-        unset($obj);
-        unset($connection);
-      } }else {
-        include 'cabecera.php';
-      };
+  <div class="row" id="cabecera">
+              <div class="col-md-1 pl-5"><img src="./imagenes/logo1.png"></div>
+              <div class="col-md-4 pl-0"><h1>MercaPalacio</h1></div>
+              <div class="col-md-6">
+              <div class="row justify-content-end">
+              <div class="col-md-1"><a href="./index.php"><button class="b1 btn btn-outline-danger">Inicio</button></a></div>
+              <div class="col-md-2"><a href="./productos.php"><button class="b1 btn btn-outline-danger">Productos</button></a></div>
+              <div class="col-md-1"><button type="button" class="b1 btn btn-outline-danger" data-toggle="modal" data-target="#miModal">
+	            <i class="far fa-user fa-3x"></i>
+              </button>
+            </div>
+              <div class="col-md-1"><button type="button" class="b1 btn btn-outline-danger">
+            <i class="fas fa-shopping-basket fa-3x"></i>
+            </div>
+            </div>
+            </div>
+            </div>
 
-?>
 <div class="row justify-content-center" id="c2" >
     <div class="col-md-6">
           <h1>Registro</h1>
     </div>
   </div>
-<div class="row justify-content-center" style="padding-top:10px">
-      <div id="form" class="col-md-5">
       <?php if (!isset($_POST["usuario"])) : ?>
-        <form method="post">
-          <fieldset>
-            <legend>- Registro -</legend>
-            <span style='color:white'>Nombre:</span><input type="text" name="usuario" required><br>
-            <span style='color:white'>Apellidos:</span><input type="text" name="apellidos" required><br>
-            <span style='color:white'>Contraseña:</span><input type="password" name="passwd" required><br>
-            <span style='color:white'>confirmar Contraseña:</span><input type="password" name="passwd1" required><br>
-            <span style='color:white'>Dirección:</span><input type="text" name="direccion" required><br>
-            <span style='color:white'>email:</span><input type="email" name="email"><br>
-            <p><input type="submit" value="Crear"></p>
-          </fieldset>
-        </form>
+      <div class='row justify-content-center' style="padding-top:10px">
+            <div class='col-md-5'>
+            <form method='post'>
+            <div class='form-group'>
+            <div class='row'>
+              <div class='col'>
+              <label>Email</label>
+                <input type='text' name='email' class='form-control' placeholder="Email" required>
+              </div>
+              <div class='col'>
+              <label>Contraseña</label>
+                <input type='password' name='passwd' class='form-control' placeholder="Contraseña" required>
+              </div>
+            </div>
+            </div>
+            <div class='form-group'>
+            <label for='exampleInputPassword1'>Confirmar contraseña</label>
+              <input type='password' name='passwd1' class='form-control' placeholder="Confirmar contraseña" required>
+              <label for='exampleInputPassword1'>Nombre</label>
+              <input type='text' name='usuario' class='form-control' placeholder="Nombre" required>
+              <label for='exampleInputPassword1'>Apellidos</label>
+              <input type='text' name='apellidos' class='form-control' placeholder="Apellidos" required>
+              <label for='exampleInputPassword1'>Dirección</label>
+              <input type='text' name='direccion' class='form-control' placeholder="Dirección" required>
+            </div>
+            <button type='submit' class='btn btn-primary'>Registrar</button>
+          </form>
+          </div>
+          </div>
 
       <?php else: ?>
 
@@ -94,8 +111,8 @@ session_start();
 
         if ($connection->query($query)) {
 
-        echo "<h1 style='color:white'>Cliente creado correctamente</h1>";
-        echo "<a href='./index.php'><button class='btn btn-outline-danger' style='color:white'>Volver a la página principal</button></a>";
+        echo "<h1>Cliente creado correctamente</h1>";
+        echo "<a href='./index.php'><button class='btn btn-outline-danger'>Volver a la página principal</button></a>";
         
 
         } else {
@@ -103,43 +120,74 @@ session_start();
         }
       } else {
         echo"<?php if (!isset(".$_POST['usuario'].")) : ?>";
-        echo"<form method='post'>";
-        echo"<fieldset>";
-        echo"<legend>- Registro -</legend>";
-        echo"<span style='color:white'>Nombre:</span><input type='text' name='usuario' value='".$usuario."' required><br>";
-        echo"<span style='color:white'>Apellidos:</span><input type='text' name='apellidos' value='".$apellidos."' required><br>";
-        echo"<span style='color:white'>Contraseña:</span><input type='password' name='passwd' required><img src='./imagenes/logo2.png' style='width:4%;height:4%'><br>";
-        echo"<span style='color:white'>confirmar Contraseña:</span><input type='password' name='passwd1' required><img src='./imagenes/logo2.png' style='width:4%;height:4%'><br>";
-        echo"<span style='color:white'>Dirección:</span><input type='text' name='direccion' value='".$direccion."' required><br>";
-        echo"<span style='color:white'>email:</span><input type='email' name='email' value='".$email."'><br>";
-        echo"<p style='color:red;background-color:black;width:200px'>Las contraseñas no coincien</p>";
-        echo"<p><input type='submit' value='Crear'></p>";
-        echo"</fieldset>";
-        echo"</form>";
-      }} else {
-                echo"<?php if (!isset(".$_POST['usuario'].")) : ?>";
-        echo"<form method='post'>";
-        echo"<fieldset>";
-        echo"<legend>- Registro -</legend>";
-        echo"<span style='color:white'>Nombre:</span><input type='text' name='usuario' value='".$usuario."' required><br>";
-        echo"<span style='color:white'>Apellidos:</span><input type='text' name='apellidos' value='".$apellidos."' required><br>";
-        echo"<span style='color:white'>Contraseña:</span><input type='password' name='passwd' required><br>";
-        echo"<span style='color:white'>confirmar Contraseña:</span><input type='password' name='passwd1' required><br>";
-        echo"<span style='color:white'>Dirección:</span><input type='text' name='direccion' value='".$direccion."' required><br>";
-        echo"<span style='color:white'>email:</span><input type='email' name='email' value='".$email."'><img src='./imagenes/logo2.png' style='width:4%;height:4%'><br>";
-        echo"<p style='color:red;background-color:black;width:200px'>Este email ya esta en uso</p>";
-        echo"<p><input type='submit' value='Crear'></p>";
-        echo"</fieldset>";
-        echo"</form>";
-
+        
+        echo"      <div class='row justify-content-center' style='padding-top:10px'>
+        <div class='col-md-5'>
+        <form method='post'>
+        <div class='form-group'>
+        <div class='row'>
+          <div class='col'>
+          <label>Email</label>
+            <input type='text' name='email' class='form-control' placeholder='Email' required>
+          </div>
+          <div class='col'>
+          <label>Contraseña</label>
+            <input type='password' name='passwd' class='form-control' placeholder='Contraseña' required><img src='./imagenes/logo2.png' style='width:9%;height:25%'>
+          </div>
+        </div>
+        </div>
+        <div class='form-group'>
+        <label for='exampleInputPassword1'>Confirmar contraseña</label>
+          <input type='password' name='passwd1' class='form-control' placeholder='Confirmar contraseña' required><img src='./imagenes/logo2.png' style='width:4%;height:4%'>
+          <label for='exampleInputPassword1'>Nombre</label>
+          <input type='text' name='usuario' class='form-control' placeholder='Nombre' required>
+          <label for='exampleInputPassword1'>Apellidos</label>
+          <input type='text' name='apellidos' class='form-control' placeholder='Apellidos' required>
+          <label for='exampleInputPassword1'>Dirección</label>
+          <input type='text' name='direccion' class='form-control' placeholder='Dirección' required>
+        </div>
+        <p style='color:red;background-color:black;width:200px'>Las contraseñas no coincien</p>
+        <button type='submit' class='btn btn-primary'>Registrar</button>
+      </form>
+      </div>
+      </div>";
+      echo"<?php if (!isset(".$_POST['usuario'].")) : ?>";
+        
+      echo"      <div class='row justify-content-center' style='padding-top:10px'>
+      <div class='col-md-5'>
+      <form method='post'>
+      <div class='form-group'>
+      <div class='row'>
+        <div class='col'>
+        <label>Email</label>
+          <input type='text' name='email' class='form-control' placeholder='Email' required><img src='./imagenes/logo2.png' style='width:9%;height:25%'>
+        </div>
+        <div class='col'>
+        <label>Contraseña</label>
+          <input type='password' name='passwd' class='form-control' placeholder='Contraseña' required>
+        </div>
+      </div>
+      </div>
+      <div class='form-group'>
+      <label for='exampleInputPassword1'>Confirmar contraseña</label>
+        <input type='password' name='passwd1' class='form-control' placeholder='Confirmar contraseña' required>
+        <label for='exampleInputPassword1'>Nombre</label>
+        <input type='text' name='usuario' class='form-control' placeholder='Nombre' required>
+        <label for='exampleInputPassword1'>Apellidos</label>
+        <input type='text' name='apellidos' class='form-control' placeholder='Apellidos' required>
+        <label for='exampleInputPassword1'>Dirección</label>
+        <input type='text' name='direccion' class='form-control' placeholder='Dirección' required>
+      </div>
+      <p style='color:red;background-color:black;width:200px'>Este email ya esta en uso</p>
+      <button type='submit' class='btn btn-primary'>Registrar</button>
+    </form>
+    </div>
+    </div>";
       }
 
         ?>
 
       <?php endif ?>
-      </div>
-</div>
-
 
 </div>
           

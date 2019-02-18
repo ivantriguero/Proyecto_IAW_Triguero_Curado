@@ -52,10 +52,17 @@ if ($result = $connection->query($query)) {}
         include 'cabecera.php';
       };
 ?>
-
+<div class="row justify-content-center" id="c2" >
+    <div class="col-md-6">
+          <h1>Clientes</h1>
+    </div>
+  </div>
         <div class="container-fluid" style="padding:0px">
-
+        <div class='row justify-content-center'>
         <?php
+        if (array_key_exists('editado', $_GET)) {
+          echo "<h3 style='color:green'>Cliente editado correctamente</h3>";
+        }
         $connection = new mysqli("localhost", "root", "Admin2015", "mercado");
         $connection->set_charset("uft8");
         
@@ -67,73 +74,43 @@ if ($result = $connection->query($query)) {}
           $query="select * from usuarios where tipo='cliente';";
 
         if ($result = $connection->query($query)) {}
-            if (!isset($_POST["cod"])) {
 
+              echo "<table class='table table-hover'>";
+              echo "<thead><tr>";
+              echo "<th scope='col'>Cod</th>";              
+              echo "<th scope='col'>Nombre</th>";
+              echo "<th scope='col'>Apellidos</th>";
+              echo "<th scope='col'>Dirección</th>";
+              echo "<th scope='col'>Email</th>";
+              echo "<th scope='col'></th>";
+              echo"</tr></thead>";
           while($obj = $result->fetch_object()) {
-            echo "<div class='row'>";
+            echo "<tr>";
             echo "<form method='post'>";
-            echo "<input type='hidden' name='cod' value='".$obj->cod_usuario."'>";
-            echo "<div class='col-md-2'><input type='text' name='nombre' value='".$obj->nombre."'></div>";
-            echo "<div class='col-md-2'><input type='text' name='apellidos' value='".$obj->apellidos."'></div>";
-            echo "<div class='col-md-2'><input type='text' name='direccion' value='".$obj->direccion."'></div>";
-            echo "<div class='col-md-2'><input type='text' name='email' value='".$obj->email."'></div>";
-            echo "<div class='col-md-1'><input type='submit' value='Editar' class='btn btn-danger'></div>";
+            echo"<th scope='row'>".$obj->cod_usuario."</th>";
+            echo "<td>$obj->nombre</td>";
+            echo "<td>$obj->apellidos</td>";
+            echo "<td>$obj->direccion</td>";
+            echo "<td>$obj->email</td>";
+            echo "<td><a href='editarclientes1.php?id=".$obj->cod_usuario."' class='btn btn-danger'><i class='fas fa-pencil-alt'></i></a><a href='editarclientes.php?id=".$obj->cod_usuario."' class='btn btn-danger'><i class='fas fa-trash-alt'></i></a></td>";
             echo "</form>";
-            echo "<form method='post'>";
-            echo "<input type='hidden' name='cod' value='".$obj->cod_usuario."'>";
-            echo "<div class='col-md-1'><input type='submit' name='eliminar' value='Eliminar' class='btn btn-danger'></div>";
-            echo "</form>";
-            echo "</div>";
+            echo "<tr>";
         }
-
-          }
-          echo "</table>";
-          if (array_key_exists('cod', $_POST)) {
-            if (array_key_exists('eliminar', $_POST)) {
-              $query="delete from usuarios where cod_usuario='".$_POST["cod"]."'";
-            } else {
-              $query="update usuarios set nombre='".$_POST["nombre"]."',apellidos='".$_POST["apellidos"]."',
-              direccion='".$_POST["direccion"]."',email='".$_POST["email"]."' WHERE cod_usuario='".$_POST["cod"]."'";
-            }
-          if ($result = $connection->query($query)) {
-            $query="select * from usuarios where tipo='cliente';";
-
-         
-        if ($result = $connection->query($query)) {}
-          if (array_key_exists('eliminar', $_POST)) {
-            echo "<div class='col-md-2'- style='color:red'>cliente eliminado correctamente</div>";
-          } else {
-          echo "<div class='col-md-2'- style='color:green'>cliente editado correctamente</div>";
-          }
-          while($obj = $result->fetch_object()) {
+        echo "</table>";
+          if (array_key_exists('id', $_GET)) {
+            $query="delete from usuarios where cod_usuario='".$_GET["id"]."'";
   
-            echo "<form method='post'>";
-            echo "<input type='hidden' name='cod' value='".$obj->cod_usuario."'>";
-            echo "<div class='col-md-2'><input type='text' name='nombre' value='".$obj->nombre."'></div>";
-            echo "<div class='col-md-2'><input type='text' name='apellidos' value='".$obj->apellidos."'></div>";
-            echo "<div class='col-md-2'><input type='text' name='direccion' value='".$obj->direccion."'></div>";
-            echo "<div class='col-md-2'><input type='text' name='email' value='".$obj->email."'></div>";
-            echo "<div class='col-md-2'><input type='submit' value='Editar' class='btn btn-danger'></div>";
-            echo "<form method='post'>";
-            echo "<input type='hidden' name='cod' value='".$obj->cod_usuario."'>";
-            echo "<div class='col-md-2'><input type='submit' name='eliminar' value='Eliminar' class='btn btn-danger'></div>";
-            echo "</form>";
-            echo "</form>";
-            }
-
-            echo "</tr>";
-            echo "</table>";
-           
-        }
-
-           else {
-            echo "Error al actualizar los datos";
-          }
-        }
-
+            if ($result = $connection->query($query)) {
+              echo "Cliente eliminado correctamente";
+  
+            } else {
+  
+              echo "error al insertar cliente";
+  
+            }          }
         ?>
 
-
+        </div>
       </div>
       <script>
     $(function() {
