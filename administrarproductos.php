@@ -43,7 +43,8 @@ if ($result = $connection->query($query)) {}
       } elseif ($obj->tipo=="administrador") {
         include 'cabeceraadmi.php';
       } }else {
-        include 'cabecera.php';
+        session_destroy();
+        header("Location: index.php");
       };
 
       ?>

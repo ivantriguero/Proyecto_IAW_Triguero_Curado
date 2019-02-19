@@ -49,7 +49,8 @@ if ($result = $connection->query($query)) {}
         unset($obj);
         unset($connection);
       } }else {
-        include 'cabecera.php';
+        session_destroy();
+        header("Location: index.php");
       };
 ?>
 <div class="row justify-content-center" id="c2" >
@@ -60,54 +61,97 @@ if ($result = $connection->query($query)) {}
         <div class="container-fluid" style="padding:0px">
         <div class='row justify-content-center'>
         <?php
-        if (array_key_exists('editado', $_GET)) {
-          echo "<h3 style='color:green'>Cliente editado correctamente</h3>";
-        }
-        $connection = new mysqli("localhost", "root", "Admin2015", "mercado");
-        $connection->set_charset("uft8");
-        
-        if ($connection->connect_errno) {
-            printf("Connection failed: %s\n", $connection->connect_error);
-            exit();
-        }
-        
-          $query="select * from usuarios where tipo='cliente';";
 
-        if ($result = $connection->query($query)) {}
-
-              echo "<table class='table table-hover'>";
-              echo "<thead><tr>";
-              echo "<th scope='col'>Cod</th>";              
-              echo "<th scope='col'>Nombre</th>";
-              echo "<th scope='col'>Apellidos</th>";
-              echo "<th scope='col'>Dirección</th>";
-              echo "<th scope='col'>Email</th>";
-              echo "<th scope='col'></th>";
-              echo"</tr></thead>";
-          while($obj = $result->fetch_object()) {
-            echo "<tr>";
-            echo "<form method='post'>";
-            echo"<th scope='row'>".$obj->cod_usuario."</th>";
-            echo "<td>$obj->nombre</td>";
-            echo "<td>$obj->apellidos</td>";
-            echo "<td>$obj->direccion</td>";
-            echo "<td>$obj->email</td>";
-            echo "<td><a href='editarclientes1.php?id=".$obj->cod_usuario."' class='btn btn-danger'><i class='fas fa-pencil-alt'></i></a><a href='editarclientes.php?id=".$obj->cod_usuario."' class='btn btn-danger'><i class='fas fa-trash-alt'></i></a></td>";
-            echo "</form>";
-            echo "<tr>";
-        }
-        echo "</table>";
-          if (array_key_exists('id', $_GET)) {
-            $query="delete from usuarios where cod_usuario='".$_GET["id"]."'";
+          if (array_key_exists('id1', $_GET)) {
+            $connection = new mysqli("localhost", "root", "Admin2015", "mercado");
+            $connection->set_charset("uft8");
+            $query="delete from usuarios where cod_usuario='".$_GET["id1"]."'";
   
             if ($result = $connection->query($query)) {
-              echo "Cliente eliminado correctamente";
+
+                echo "<h3 style='color:red'>Cliente eliminado correctamente</h3>";
+              
+
+              $connection = new mysqli("localhost", "root", "Admin2015", "mercado");
+              $connection->set_charset("uft8");
+              
+              if ($connection->connect_errno) {
+                  printf("Connection failed: %s\n", $connection->connect_error);
+                  exit();
+              }
+              
+                $query="select * from usuarios where tipo='cliente';";
+      
+              if ($result = $connection->query($query)) {}
+      
+                    echo "<table class='table table-hover'>";
+                    echo "<thead><tr>";
+                    echo "<th scope='col'>Cod</th>";              
+                    echo "<th scope='col'>Nombre</th>";
+                    echo "<th scope='col'>Apellidos</th>";
+                    echo "<th scope='col'>Dirección</th>";
+                    echo "<th scope='col'>Email</th>";
+                    echo "<th scope='col'></th>";
+                    echo"</tr></thead>";
+                while($obj = $result->fetch_object()) {
+                  echo "<tr>";
+                  echo "<form method='post'>";
+                  echo"<th scope='row'>".$obj->cod_usuario."</th>";
+                  echo "<td>$obj->nombre</td>";
+                  echo "<td>$obj->apellidos</td>";
+                  echo "<td>$obj->direccion</td>";
+                  echo "<td>$obj->email</td>";
+                  echo "<td><a href='editarclientes1.php?id=".$obj->cod_usuario."' class='btn btn-danger'><i class='fas fa-pencil-alt'></i></a><a href='editarclientes.php?id1=".$obj->cod_usuario."' class='btn btn-danger'><i class='fas fa-trash-alt'></i></a></td>";
+                  echo "</form>";
+                  echo "<tr>";
+              }
+              echo "</table>";
   
             } else {
   
               echo "error al insertar cliente";
   
-            }          }
+            }}else {
+              if (array_key_exists('editado', $_GET)) {
+                echo "<h3 style='color:green'>Cliente editado correctamente</h3>";
+              }
+
+              $connection = new mysqli("localhost", "root", "Admin2015", "mercado");
+              $connection->set_charset("uft8");
+              
+              if ($connection->connect_errno) {
+                  printf("Connection failed: %s\n", $connection->connect_error);
+                  exit();
+              }
+              
+                $query="select * from usuarios where tipo='cliente';";
+      
+              if ($result = $connection->query($query)) {}
+      
+                    echo "<table class='table table-hover'>";
+                    echo "<thead><tr>";
+                    echo "<th scope='col'>Cod</th>";              
+                    echo "<th scope='col'>Nombre</th>";
+                    echo "<th scope='col'>Apellidos</th>";
+                    echo "<th scope='col'>Dirección</th>";
+                    echo "<th scope='col'>Email</th>";
+                    echo "<th scope='col'></th>";
+                    echo"</tr></thead>";
+                while($obj = $result->fetch_object()) {
+                  echo "<tr>";
+                  echo "<form method='post'>";
+                  echo"<th scope='row'>".$obj->cod_usuario."</th>";
+                  echo "<td>$obj->nombre</td>";
+                  echo "<td>$obj->apellidos</td>";
+                  echo "<td>$obj->direccion</td>";
+                  echo "<td>$obj->email</td>";
+                  echo "<td><a href='editarclientes1.php?id=".$obj->cod_usuario."' class='btn btn-danger'><i class='fas fa-pencil-alt'></i></a><a href='editarclientes.php?id1=".$obj->cod_usuario."' class='btn btn-danger'><i class='fas fa-trash-alt'></i></a></td>";
+                  echo "</form>";
+                  echo "<tr>";
+              }
+              echo "</table>";
+
+            }
         ?>
 
         </div>

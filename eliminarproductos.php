@@ -50,7 +50,8 @@ if ($result = $connection->query($query)) {}
         unset($obj);
         unset($connection);
       } }else {
-        include 'cabecera.php';
+        session_destroy();
+        header("Location: index.php");
       };
 ?>
 

@@ -41,6 +41,7 @@ if ($result = $connection->query($query)) {}
         if ($obj->tipo=="cliente"){
         include 'cabecerasesion.php';
         $result->close();
+        header('Location: index.php');
         unset($obj);
         unset($connection);
       } elseif ($obj->tipo=="administrador") {
@@ -49,7 +50,8 @@ if ($result = $connection->query($query)) {}
         unset($obj);
         unset($connection);
       } }else {
-        include 'cabecera.php';
+        session_destroy();
+        header("Location: index.php");
       };
 ?>
 <div class="row justify-content-center" id="c2" >
@@ -91,7 +93,7 @@ if ($result = $connection->query($query)) {}
             <td>$obj->email</td>
             <tr>
             ";
-
+            $cod=$obj->cod_usuario;
             echo "<div class='row justify-content-center'>
             <div class='col-md-5'>
             <form method='post'>
@@ -114,27 +116,96 @@ if ($result = $connection->query($query)) {}
               <input type='text' name='apellidos' class='form-control' value='".$obj->apellidos."' required>
               <label for='exampleInputPassword1'>Dirección</label>
               <input type='text' name='direccion' class='form-control' value='".$obj->direccion."' required>
+              <input type='hidden' name='cod' value='".$obj->cod_usuario."'>
             </div>
             <button type='submit' class='btn btn-primary'>Editar</button>
           </form>
           </div>
           </div>";
         }
-
-          }
+          
+       }
           if (array_key_exists('email', $_POST)) {
+            $cod=$_POST["cod"];
+            if ($result = $connection->query($query)) {}
+              $obj = $result->fetch_object();
+              $email=$obj->email;
+
+            $query = "select * from usuarios where email='".$email."' AND cod_usuario!='".$cod."'";
+        if ($result = $connection->query($query)) {}
+        $obj = $result->fetch_object();
+        if ($result->num_rows==0) {
+
           $query="update usuarios set nombre='".$_POST["nombre"]."',passwd=md5('".$_POST["passwd"]."'),
-          apellidos='".$_POST["apellidos"]."',direccion='".$_POST["direccion"]."',email='".$_POST["email"]."' WHERE cod_usuario='".$_GET["id"]."'";
+          apellidos='".$_POST["apellidos"]."',direccion='".$_POST["direccion"]."',email='".$_POST["email"]."' WHERE cod_usuario='".$cod."'";
 
           if ($result = $connection->query($query)) {
             header('Location: editarclientes.php?editado=si');
 
-          } else {
+          }
+        } else {
 
-            echo "error al insertar cliente";
+          $query="select * from usuarios where tipo='cliente' AND cod_usuario='".$cod."';";
+
+
+          if ($result = $connection->query($query)) {}
+            while($obj = $result->fetch_object()) {
+  
+              echo "
+              <table class='table table-hover'>
+                <thead><tr>
+                <th scope='col'>Cod</th>            
+                <th scope='col'>Nombre</th>
+                <th scope='col'>Apellidos</th>
+                <th scope='col'>Dirección</th>
+                <th scope='col'>Email</th>
+                </tr></thead>
+              <tr>
+              <th scope='row'>".$obj->cod_usuario."</th>
+              <td>$obj->nombre</td>
+              <td>$obj->apellidos</td>
+              <td>$obj->direccion</td>
+              <td>$obj->email</td>
+              <tr>
+              ";
+              $cod=$obj->cod_usuario;
+              echo "<div class='row justify-content-center'>
+              <div class='col-md-5'>
+              <form method='post'>
+              <div class='form-group'>
+              <div class='row'>
+                <div class='col'>
+                <label>Email</label>
+                  <input type='text' name='email' class='form-control' value='".$obj->email."' required>
+                </div>
+                <div class='col'>
+                <label>Contraseña</label>
+                  <input type='password' name='passwd' class='form-control' required>
+                </div>
+              </div>
+              </div>
+              <div class='form-group'>
+                <label for='exampleInputPassword1'>Nombre</label>
+                <input type='text' name='nombre' class='form-control' value='".$obj->nombre."' required>
+                <label for='exampleInputPassword1'>Apellidos</label>
+                <input type='text' name='apellidos' class='form-control' value='".$obj->apellidos."' required>
+                <label for='exampleInputPassword1'>Dirección</label>
+                <input type='text' name='direccion' class='form-control' value='".$obj->direccion."' required>
+                <input type='hidden' name='cod' value='".$obj->cod_usuario."'>
+              </div>
+              <button type='submit' class='btn btn-primary'>Editar</button>
+            </form>
+            <h4 style='color:red'>Este email ya está en uso</h4>
+            </div>
+            </div>";
+          }
+            
+         
+
 
           }
-        }
+          }
+        
         ?>
 
 

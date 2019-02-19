@@ -151,6 +151,7 @@ session_start();
       </form>
       </div>
       </div>";
+      }} else {
       echo"<?php if (!isset(".$_POST['usuario'].")) : ?>";
         
       echo"      <div class='row justify-content-center' style='padding-top:10px'>
