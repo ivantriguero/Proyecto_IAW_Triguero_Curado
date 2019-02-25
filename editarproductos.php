@@ -77,7 +77,7 @@ if ($result = $connection->query($query)) {}
               echo "<div class='col-md-2'>";
             echo "<div class='card'>";
             echo "<form method='post' enctype='multipart/form-data'>";
-            echo "<img class='card-img-top' alt='Card image cap' style='width:100%' src='data:image/png;base64,".base64_encode($obj->imagen)."'/>";
+            echo "<div style='witdh:220px;height:270px'><img class='img-fluid' alt='Card image cap' src='data:image/png;base64,".base64_encode($obj->imagen)."'/></div>";
             echo "<input type='file' name='imagen' style='color:transparent;'>";
             echo "<div class='card-body'>";
             echo "<input type='hidden' name='cod' value='".$obj->cod_producto."'>";
@@ -113,7 +113,7 @@ if ($result = $connection->query($query)) {}
             echo "<div class='col-md-2'>";
             echo "<div class='card'>";
             echo "<form method='post' enctype='multipart/form-data'>";
-            echo "<img class='card-img-top' alt='Card image cap' style='width:100%' src='data:image/png;base64,".base64_encode($obj->imagen)."'/>";
+            echo "<div style='witdh:220px;height:270px'><img class='img-fluid' alt='Card image cap' src='data:image/png;base64,".base64_encode($obj->imagen)."'/></div>";
             echo "<input type='file' name='imagen' style='color:transparent;'>";
             echo "<div class='card-body'>";
             echo "<input type='hidden' name='cod' value='".$obj->cod_producto."'>";

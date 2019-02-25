@@ -76,7 +76,7 @@ if ($result = $connection->query($query)) {}
           while($obj = $result->fetch_object()) {
             echo "<div class='col-md-2'>";
             echo "<div class='card'>";
-            echo "<img class='card-img-top' alt='Card image cap' style='width:100%' src='data:image/png;base64,".base64_encode($obj->imagen)."'/>";
+            echo "<div class='d-flex align-items-center' style='witdh:220px;height:270px'><img class='rounded mx-auto d-block img-fluid' alt='Card image cap' src='data:image/png;base64,".base64_encode($obj->imagen)."'/></div>";
             echo "<div class='card-body'>";
             echo "<h5 class='card-title'>".$obj->descripcion."</h5>";
             echo "Cantidad: ".$obj->stock."<br>";

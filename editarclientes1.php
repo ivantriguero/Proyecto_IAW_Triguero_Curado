@@ -129,7 +129,7 @@ if ($result = $connection->query($query)) {}
             $cod=$_POST["cod"];
             if ($result = $connection->query($query)) {}
               $obj = $result->fetch_object();
-              $email=$obj->email;
+              $email=$_POST["email"];
 
             $query = "select * from usuarios where email='".$email."' AND cod_usuario!='".$cod."'";
         if ($result = $connection->query($query)) {}

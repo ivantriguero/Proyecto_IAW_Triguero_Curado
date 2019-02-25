@@ -60,8 +60,8 @@ if ($result = $connection->query($query)) {}
   </div>
         <div class="container-fluid" style="padding:0px">
         <div class='row justify-content-center'>
+        
         <?php
-
           if (array_key_exists('id1', $_GET)) {
             $connection = new mysqli("localhost", "root", "Admin2015", "mercado");
             $connection->set_charset("uft8");
@@ -101,9 +101,10 @@ if ($result = $connection->query($query)) {}
                   echo "<td>$obj->apellidos</td>";
                   echo "<td>$obj->direccion</td>";
                   echo "<td>$obj->email</td>";
-                  echo "<td><a href='editarclientes1.php?id=".$obj->cod_usuario."' class='btn btn-danger'><i class='fas fa-pencil-alt'></i></a><a href='editarclientes.php?id1=".$obj->cod_usuario."' class='btn btn-danger'><i class='fas fa-trash-alt'></i></a></td>";
+                  echo "<td><a href='editarclientes1.php?id=".$obj->cod_usuario."' class='btn btn-primary'><i class='fas fa-pencil-alt'></i></a><a href='editarclientes.php?id1=".$obj->cod_usuario."' class='btn btn-danger'><i class='fas fa-trash-alt'></i></a></td>";
                   echo "</form>";
-                  echo "<tr>";
+                  echo "<tr>
+                  ";
               }
               echo "</table>";
   
@@ -145,7 +146,7 @@ if ($result = $connection->query($query)) {}
                   echo "<td>$obj->apellidos</td>";
                   echo "<td>$obj->direccion</td>";
                   echo "<td>$obj->email</td>";
-                  echo "<td><a href='editarclientes1.php?id=".$obj->cod_usuario."' class='btn btn-danger'><i class='fas fa-pencil-alt'></i></a><a href='editarclientes.php?id1=".$obj->cod_usuario."' class='btn btn-danger'><i class='fas fa-trash-alt'></i></a></td>";
+                  echo "<td><a href='editarclientes1.php?id=".$obj->cod_usuario."' class='btn btn-primary'><i class='fas fa-pencil-alt'></i></a><a href='editarclientes.php?id1=".$obj->cod_usuario."' class='btn btn-danger'><i class='fas fa-trash-alt'></i></a></td>";
                   echo "</form>";
                   echo "<tr>";
               }
