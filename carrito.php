@@ -1,24 +1,4 @@
-<?php
-session_start();
-if (isset($_SESSION["user"])) {
-$connection = new mysqli("localhost", "root", "Admin2015", "mercado");
-$connection->set_charset("uft8");
-
-if ($connection->connect_errno) {
-    printf("Connection failed: %s\n", $connection->connect_error);
-    exit();
-}
-
-  $query="select tipo from usuarios where
-  email='".$_SESSION["user"]."';";
-if ($result = $connection->query($query)) {}
-    $obj = $result->fetch_object();
-  }
-
-?>
-<!DOCTYPE html>
-<html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MercaPalacio</title>
@@ -35,65 +15,56 @@ if ($result = $connection->query($query)) {}
       }
     </style>
   </head>
-  <body>
-  <div class ="container-fluid" id="contenedor">
-      <?php
-      if (isset($_SESSION["user"])) {
-        if ($obj->tipo=="cliente"){
-        include 'cabecerasesion.php';
-        $result->close();
-        unset($obj);
-        unset($connection);
-      } elseif ($obj->tipo=="administrador") {
-        include 'cabeceraadmi.php';
-        $result->close();
-        unset($obj);
-        unset($connection);
-      } }else {
-        include 'cabecera.php';
-      };
-?>
 
-        <div class="container-fluid" style="padding:0px">
-        <div class="row">
-        <?php
-        $connection = new mysqli("localhost", "root", "Admin2015", "mercado");
+<?php
+session_start();
+$items = $_SESSION['cart'];
+$connection = new mysqli("localhost", "root", "Admin2015", "mercado");
         $connection->set_charset("uft8");
         
         if ($connection->connect_errno) {
             printf("Connection failed: %s\n", $connection->connect_error);
             exit();
         }
-        
-          $query="select * from productos where cod_producto='".$_GET["id"]."';";
+
+for ($i=0;$i<sizeof($items);$i++) {
+  if(isset($items[$i])){
+  $query="select * from productos where cod_producto=".$items[$i].";";
         if ($result = $connection->query($query)) {}
 
 
-          while($obj = $result->fetch_object()) {
+          $obj = $result->fetch_object(); 
             echo "<div class='col-md-2'>";
             echo "<div class='card'>";
-            echo "<img class='card-img-top' alt='Card image cap' style='width:100%' src='data:image/png;base64,".base64_encode($obj->imagen)."'/>";
+            echo "<div class='d-flex align-items-center' style='witdh:220px;height:270px'><img class='rounded mx-auto d-block img-fluid' alt='Card image cap' src='data:image/png;base64,".base64_encode($obj->imagen)."'/></div>";
             echo "<div class='card-body'>";
-            echo "<h5 class='card-title'>".$obj->descripcion."</h5>";
+            echo "<h3 class='card-title'>".$obj->descripcion."</h3>";
             echo "Cantidad: ".$obj->stock."<br>";
-            echo "Precio: ".$obj->precio."€<br>";
+            echo "Precio Total: ".$obj->precio."€<br>";
+            echo "<a href='delcar.php?remove=".$i."' id='button' class='btn btn-primary'>Eliminar</a>";
             echo "</div>";
             echo "</div>";
             echo "</div>";
-          }
+          
+}else{
+$i=$i+1;
+$query="select * from productos where cod_producto=".$items[$i].";";
+        if ($result = $connection->query($query)) {}
 
 
+          $obj = $result->fetch_object(); 
+            echo "<div class='col-md-2'>";
+            echo "<div class='card'>";
+            echo "<div class='d-flex align-items-center' style='witdh:220px;height:270px'><img class='rounded mx-auto d-block img-fluid' alt='Card image cap' src='data:image/png;base64,".base64_encode($obj->imagen)."'/></div>";
+            echo "<div class='card-body'>";
+            echo "<h3 class='card-title'>".$obj->descripcion."</h3>";
+            echo "Cantidad: ".$obj->stock."<br>";
+            echo "Precio Total: ".$obj->precio."€<br>";
+            echo "<a href='delcar.php?remove=".$i."' id='button' class='btn btn-primary'>Eliminar</a>";
+            echo "</div>";
+            echo "</div>";
+            echo "</div>";
+}
 
-        ?>
-
-</div>
-
-      </div>
-      <script>
-    $(function() {
-
-
-    });
-</script>
-  </body>
-</html>
+}
+?>

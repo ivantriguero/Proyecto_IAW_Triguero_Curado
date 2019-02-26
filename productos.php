@@ -78,10 +78,10 @@ if ($result = $connection->query($query)) {}
             echo "<div class='card'>";
             echo "<div class='d-flex align-items-center' style='witdh:220px;height:270px'><img class='rounded mx-auto d-block img-fluid' alt='Card image cap' src='data:image/png;base64,".base64_encode($obj->imagen)."'/></div>";
             echo "<div class='card-body'>";
-            echo "<h5 class='card-title'>".$obj->descripcion."</h5>";
+            echo "<h3 class='card-title'>".$obj->descripcion."</h3>";
             echo "Cantidad: ".$obj->stock."<br>";
             echo "Precio: ".$obj->precio."€<br>";
-            echo "<a href='carrito.php?id=".$obj->cod_producto."' id='button' class='btn btn-primary'>Comprar</a>";
+            echo "<a href='addtocart.php?id=".$obj->cod_producto."' id='button' class='btn btn-primary'>Comprar</a>";
             echo "</div>";
             echo "</div>";
             echo "</div>";
@@ -95,22 +95,7 @@ if ($result = $connection->query($query)) {}
 
       </div>
       <script>
-    $(function() {
-        $("#quantity").text(0);
-        $("#button").click(function(event) {
-          event.preventDefault();
-          $.ajax({
-            url: $(this).attr("href"),
-          }).done(function(data) {
-             if (data=="OK") {
-               $("#quantity").text(parseInt($("#quantity").text())+1);
-             } else {
-               alert("Something went wrong!!!"+data);
-             }
-
-          });
-        });
-     });
+    
 </script>
   </body>
 </html>

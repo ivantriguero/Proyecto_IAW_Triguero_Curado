@@ -39,9 +39,8 @@ include './iniciosesion.php';
 	            <i class="far fa-user fa-3x"></i>
               </button>
             </div>
-              <div class="col-md-1"><button type="button" class="b1 btn btn-outline-danger">
-            <i class="fas fa-shopping-basket fa-3x"></i>
-            </div>
+            <div class="col-md-2"><a href="./carrito.php"><button type="button" class="b1 btn btn-outline-danger"><i class="fas fa-shopping-basket fa-3x"></i></a></div>
+
             </div>
             </div>
             </div>

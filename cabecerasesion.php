@@ -41,9 +41,8 @@ include './iniciosesion.php';
               <div class="col-md-2"><a href="./cuenta.php"><button type="button" class="b1 btn btn-outline-danger">Mi cuenta</button></a></div>
               <div class="col-md-1">
                 <div>
-                  <button type="button" class="b1 btn btn-outline-danger">
-                    <i class="fas fa-shopping-basket fa-3x"></i>
-                  </button>
+                <div class="col-md-2"><a href="./carrito.php"><button type="button" class="b1 btn btn-outline-danger"><i class="fas fa-shopping-basket fa-3x"></i></a></div>
+
                 </div>
               </div>
               <div class="col-md-2">

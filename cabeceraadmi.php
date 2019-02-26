@@ -37,7 +37,7 @@
               <div class="col-md-1"><a href="./index.php"><button class="b1 btn btn-outline-danger">Inicio</button></a></div>
               <div class="col-md-2"><a href="./productos.php"><button class="b1 btn btn-outline-danger">Productos</button></a></div>
             <div class="col-md-2"><a href="./administrar.php"><button class="b1 btn btn-outline-danger">Administrar</button></a></div>
-            <div class="col-md-2"><button type="button" class="b1 btn btn-outline-danger"><i class="fas fa-shopping-basket fa-3x"></i></div>
+            <div class="col-md-2"><a href="./carrito.php"><button type="button" class="b1 btn btn-outline-danger"><i class="fas fa-shopping-basket fa-3x"></i></a></div>
             <div class="col-md-1"><a href="./cerrarsesion.php"><button class="b1 btn btn-outline-danger"><i class="fas fa-sign-out-alt fa-3x"></i></button></a></div>   
           </div>
             </div>
