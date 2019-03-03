@@ -1,5 +1,19 @@
 <?php
 session_start();
+if (isset($_SESSION["user"])) {
+$connection = new mysqli("localhost", "root", "Admin2015", "mercado");
+$connection->set_charset("utf8");
+
+if ($connection->connect_errno) {
+    printf("Connection failed: %s\n", $connection->connect_error);
+    exit();
+}
+
+  $query="select tipo from usuarios where
+  email='".$_SESSION["user"]."';";
+if ($result = $connection->query($query)) {}
+    $obj = $result->fetch_object();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,8 +36,24 @@ session_start();
   </head>
   <body>
   <div class ="container-fluid" id="contenedor">
-      <?php
+  <?php
+      if (isset($_SESSION["user"])) {
+        if ($obj->tipo=="cliente"){
         include 'cabecerasesion.php';
+      } elseif ($obj->tipo=="administrador") {
+        include 'cabeceraadmi.php';
+      } }else {
+        session_destroy();
+        header("Location: index.php");
+      };
+
+      ?>
+      <div class="row justify-content-center" id="c2" >
+    <div class="col-md-6">
+          <h1>Mi cuenta</h1>
+    </div>
+  </div>
+      <?php
         echo"<div class='row justify-content-center' id='cuenta'>";
         echo"<div class='col-md-6'>";
 
@@ -43,16 +73,35 @@ session_start();
                echo "ERROR";
            } else {
 
-                echo "<table>";
                 while($obj = $result->fetch_object()) {
-                echo "<tr><td>Codigo:</td><td>".$obj->cod_usuario."</td></tr>";
-                echo "<tr><td>Nombre:</td><td>".$obj->nombre."</td></tr>";
-                echo "<tr><td>Apellidos:</td><td>".$obj->apellidos."</td></tr>";
-                echo "<tr><td>Dirección:</td><td>".$obj->direccion."</td></tr>";
-                echo "<tr><td>email:</td><td>".$obj->email."</td></tr>";
-                echo "<tr><td>Tipo:</td><td>".$obj->tipo."</td></tr>";
+                  echo "<div class='row justify-content-center'>
+                  <div class='col-md-12'>
+                  <form method='post'>
+                  <div class='form-group'>
+                  <div class='row'>
+                    <div class='col'>
+                    <label>Email</label>
+                      <p>$obj->email</p>
+                    </div>
+                    <div class='col'>
+                    <label>Editar</label>
+                    <a href='editarcuenta.php?id=".$obj->cod_usuario."' class='btn btn-primary'><i class='fas fa-pencil-alt'></i></a>                    </div>
+                  </div>
+                  </div>
+                  <div class='form-group'>
+                    <label for='exampleInputPassword1'>Nombre</label>
+                    <p>$obj->nombre</p>
+                    <label for='exampleInputPassword1'>Apellidos</label>
+                    <p>$obj->apellidos</p>
+                    <label for='exampleInputPassword1'>Dirección</label>
+                    <p>$obj->direccion</p>
+                    <input type='hidden' name='cod' value='".$obj->cod_usuario."'>
+                  </div>
+                  <button type='submit' class='btn btn-primary'>Editar</button>
+                </form>
+                </div>
+                </div>";
                 }
-                echo "</table>";
 
                 
             }

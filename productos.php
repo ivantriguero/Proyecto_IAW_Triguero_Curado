@@ -52,6 +52,7 @@ if ($result = $connection->query($query)) {}
       } }else {
         include 'cabecera.php';
       };
+      
 ?>
 <div class="row justify-content-center" id="c2" >
     <div class="col-md-6">
@@ -61,6 +62,15 @@ if ($result = $connection->query($query)) {}
         <div class="container-fluid" style="padding:0px">
         <div class="row">
         <?php
+if(isset($_GET['stock']) & !empty($_GET['stock'])){  
+  echo"<script>
+  $(function() {
+      alert('No existe suficiente stock del producto para tu pedido');
+   });
+    </script>";
+}else{
+  null;
+}
         $connection = new mysqli("localhost", "root", "Admin2015", "mercado");
         $connection->set_charset("uft8");
         
@@ -74,6 +84,18 @@ if ($result = $connection->query($query)) {}
 
 
           while($obj = $result->fetch_object()) {
+            if ($obj->stock==0){
+            echo "<div class='col-md-2'>";
+            echo "<div class='card'>";
+            echo "<div class='d-flex align-items-center' style='witdh:220px;height:270px'><img class='rounded mx-auto d-block img-fluid' alt='Card image cap' src='data:image/png;base64,".base64_encode($obj->imagen)."'/></div>";
+            echo "<div class='card-body'>";
+            echo "<h3 class='card-title'>".$obj->descripcion."</h3>";
+            echo "Stock: <span style='color:red'>Sin existencias</span><br>";
+            echo "Precio: ".$obj->precio."€<br>";
+            echo "</div>";
+            echo "</div>";
+            echo "</div>";
+            }else{
             echo "<div class='col-md-2'>";
             echo "<div class='card'>";
             echo "<div class='d-flex align-items-center' style='witdh:220px;height:270px'><img class='rounded mx-auto d-block img-fluid' alt='Card image cap' src='data:image/png;base64,".base64_encode($obj->imagen)."'/></div>";
@@ -81,13 +103,14 @@ if ($result = $connection->query($query)) {}
             echo "<h3 class='card-title'>".$obj->descripcion."</h3>";
             echo "Stock: ".$obj->stock."<br>";
             echo "Precio: ".$obj->precio."€<br>";
-            echo "<form method='post' action='addtocart.php?id=".$obj->cod_producto."'>";
+            echo "<form method='post' action='addtocart.php?id=".$obj->cod_producto."&stock=".$obj->stock."'>";
             echo "Cantidad: <input type='number' name='cantidad' required>";
             echo "<button type='submit' id='button' class='btn btn-primary'>Comprar</button>";
             echo "</form>";
             echo "</div>";
             echo "</div>";
             echo "</div>";
+            }
           }
 
 

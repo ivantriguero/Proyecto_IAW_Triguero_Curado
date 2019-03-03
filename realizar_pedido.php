@@ -68,7 +68,6 @@ if (isset($_SESSION["user"])) {
     for ($i=0;$i<sizeof($items);$i++) {
         $productos=$productos." ". +$items[$i]."(".$cantidad[$i].")";
     }
-    echo $productos;
 $connection = new mysqli("localhost", "root", "Admin2015", "mercado");
 $connection->set_charset("uft8");
 
@@ -86,7 +85,12 @@ $cod= $obj->cod_usuario;
 
   $query="insert into pedidos(fecha,cod_usuario,precio,productos) values (curdate(),".$cod.",".$_GET['total'].",'".$productos."')";
 if ($result = $connection->query($query)) {}
-
+  $cantidad=$_SESSION["cantidad"];
+  $cart=$_SESSION["cart"];
+  for ($i=0;$i<sizeof($cart);$i++) {
+  $query="update productos set stock=stock-".$cantidad[$i]." where cod_producto=".$cart[$i]."";
+  if ($result = $connection->query($query)) {}
+  }
 $_SESSION["cart"]=[];
 $_SESSION['cantidad']=[];
  echo "<h1>Pedido realizado correctamente</h1>
