@@ -41,3 +41,5 @@ create table incluyen(
     foreign key (cod_pedido) references pedidos(cod_pedido)
 );
 
+alter table pedidos add precio decimal(6,2);
+alter table pedidos add productos varchar(20000);

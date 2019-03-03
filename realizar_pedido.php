@@ -13,8 +13,8 @@ if ($connection->connect_errno) {
   email='".$_SESSION["user"]."';";
 if ($result = $connection->query($query)) {}
     $obj = $result->fetch_object();
-  }
 
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,7 +37,8 @@ if ($result = $connection->query($query)) {}
   </head>
   <body>
   <div class ="container-fluid" id="contenedor">
-      <?php
+      
+<?php
       if (isset($_SESSION["user"])) {
         if ($obj->tipo=="cliente"){
         include 'cabecerasesion.php';
@@ -52,53 +53,48 @@ if ($result = $connection->query($query)) {}
       } }else {
         include 'cabecera.php';
       };
+
 ?>
 <div class="row justify-content-center" id="c2" >
     <div class="col-md-6">
-          <h1>Productos</h1>
+          <h1>Carrito</h1>
     </div>
   </div>
-        <div class="container-fluid" style="padding:0px">
-        <div class="row">
-        <?php
-        $connection = new mysqli("localhost", "root", "Admin2015", "mercado");
-        $connection->set_charset("uft8");
-        
-        if ($connection->connect_errno) {
-            printf("Connection failed: %s\n", $connection->connect_error);
-            exit();
-        }
-        
-          $query="select * from productos;";
-        if ($result = $connection->query($query)) {}
+<?php
+if (isset($_SESSION["user"])) {
+    $productos="";
+    $items = $_SESSION['cart'];
+    $cantidad = $_SESSION['cantidad'];
+    for ($i=0;$i<sizeof($items);$i++) {
+        $productos=$productos." ". +$items[$i]."(".$cantidad[$i].")";
+    }
+    echo $productos;
+$connection = new mysqli("localhost", "root", "Admin2015", "mercado");
+$connection->set_charset("uft8");
 
+if ($connection->connect_errno) {
+    printf("Connection failed: %s\n", $connection->connect_error);
+    exit();
+}
 
-          while($obj = $result->fetch_object()) {
-            echo "<div class='col-md-2'>";
-            echo "<div class='card'>";
-            echo "<div class='d-flex align-items-center' style='witdh:220px;height:270px'><img class='rounded mx-auto d-block img-fluid' alt='Card image cap' src='data:image/png;base64,".base64_encode($obj->imagen)."'/></div>";
-            echo "<div class='card-body'>";
-            echo "<h3 class='card-title'>".$obj->descripcion."</h3>";
-            echo "Stock: ".$obj->stock."<br>";
-            echo "Precio: ".$obj->precio."€<br>";
-            echo "<form method='post' action='addtocart.php?id=".$obj->cod_producto."'>";
-            echo "Cantidad: <input type='number' name='cantidad' required>";
-            echo "<button type='submit' id='button' class='btn btn-primary'>Comprar</button>";
-            echo "</form>";
-            echo "</div>";
-            echo "</div>";
-            echo "</div>";
-          }
+  $query="select cod_usuario from usuarios where
+  email='".$_SESSION["user"]."';";
+if ($result = $connection->query($query)) {}
+    $obj = $result->fetch_object();
+$cod= $obj->cod_usuario;
+  
 
+  $query="insert into pedidos(fecha,cod_usuario,precio,productos) values (curdate(),".$cod.",".$_GET['total'].",'".$productos."')";
+if ($result = $connection->query($query)) {}
 
+$_SESSION["cart"]=[];
+$_SESSION['cantidad']=[];
+ echo "<h1>Pedido realizado correctamente</h1>
+ <a class='b1 btn btn-outline-danger' href='index.php'><h3>Volver a inicio</h3></a>
+ ";}else{
+     echo "<h1>Para realizar el pedido es necesario registrarse</h1>
+     <a href='registro.php'>Registrarse</a>
+     ";
+ }
 
-        ?>
-
-</div>
-
-      </div>
-      <script>
-    
-</script>
-  </body>
-</html>
+?>

@@ -2,7 +2,7 @@
 session_start();
 if (isset($_SESSION["user"])) {
 $connection = new mysqli("localhost", "root", "Admin2015", "mercado");
-$connection->set_charset("uft8");
+$connection->set_charset("utf8");
 
 if ($connection->connect_errno) {
     printf("Connection failed: %s\n", $connection->connect_error);
@@ -67,7 +67,7 @@ if ($result = $connection->query($query)) {}
 
 
             <div class="col-md-12">
-            <a href="#"><button class="btn-danger btn-block btn-lg" style="height:100px">Administrar Pedidos</button></a>
+            <a href="administrarpedidos.php"><button class="btn-danger btn-block btn-lg" style="height:100px">Administrar Pedidos</button></a>
             </div>
           </div>
           <div class="col-md-5 vcenter" id="inf">   
