@@ -53,7 +53,7 @@ if ($result = $connection->query($query)) {}
    
 
           <div class="row" style="padding-top:10px">
-          <div class="col-md-6">
+          <div class="col-md-12">
           <div class="row">
           <div class="col-md-12">
           <p>
@@ -84,20 +84,6 @@ Eliminar Productos
   </div>
 
         </div>
-        </div>
-        <div class="col-md-6">
-        
-        <?php
-       
-?>
-        <h3>Chart using data from JSON URL</h3>
-        <div id="chart-container">Chart will render here!</div>
-        <br/>
-        <br/>
-        <a href="../index.php">Go Back</a>
-
-        
-        
         </div>
         </div>
         

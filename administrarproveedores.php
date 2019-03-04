@@ -60,7 +60,11 @@ if ($result = $connection->query($query)) {}
   </div>
         <div class="container-fluid" style="padding:0px">
         <div class='row justify-content-center'>
-        
+        <div class='row'><div class='col-md-7'><h5 style='color:red'>Ten en cuenta que al eliminar un producto se elimina el/los producto asociado a él</h5></div></div>
+
+        <div class="row justify-content-end">
+        <div class="col-md-2">
+        <a href='administrarproveedores2.php' class='btn btn-primary'>Insertar nuevo proveedor</a><br></div></div>
         <?php
           if (array_key_exists('id1', $_GET)) {
             $connection = new mysqli("localhost", "root", "Admin2015", "mercado");
@@ -69,7 +73,7 @@ if ($result = $connection->query($query)) {}
   
             if ($result = $connection->query($query)) {
 
-                echo "<h3 style='color:red'>Proveedor eliminado correctamente</h3>";
+                echo "<h3 style='color:green'>Proveedor eliminado correctamente</h3>";
               
 
               $connection = new mysqli("localhost", "root", "Admin2015", "mercado");
@@ -110,7 +114,7 @@ if ($result = $connection->query($query)) {}
   
             }}else {
               if (array_key_exists('editado', $_GET)) {
-                echo "<h3 style='color:green'>Proveedor editado correctamente</h3>";
+                echo "<div class='col-md-12'><h3 style='color:green'>Proveedor editado correctamente</h3></div>";
               }
               $connection = new mysqli("localhost", "root", "Admin2015", "mercado");
               $connection->set_charset("uft8");
@@ -123,8 +127,9 @@ if ($result = $connection->query($query)) {}
                 $query="select * from proveedores;";
       
               if ($result = $connection->query($query)) {}
-      
-                    echo "<table class='table table-hover'>";
+                    
+
+                echo "<table class='table table-hover'>";
                     echo "<thead><tr>";
                     echo "<th scope='col'>Cod</th>";              
                     echo "<th scope='col'>Nombre</th>";
@@ -148,7 +153,7 @@ if ($result = $connection->query($query)) {}
   
             
         ?>
-
+          
         </div>
       </div>
       <script>

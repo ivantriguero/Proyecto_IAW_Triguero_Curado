@@ -25,10 +25,10 @@
         <form method="post" enctype="multipart/form-data">
           <fieldset>
             <legend style="color:white">- Registrar Producto -</legend>
-            <span style='color:white'>Descripción:</span><input type="text" name="desc" required><br>
-            <span style='color:white'>Precio:</span><input step="any" type="number" name="price" required><br>
+            <span style='color:white'>Descripción:</span><input style="width:80%" type="text" name="desc" required><br>
+            <span style='color:white'>Precio:</span><input style="width:80%" step="any" type="number" name="price" required><br>
             <span style='color:white'>Imagen:</span><input style="color:white" type="file" name="imagen" required><br>
-            <span style='color:white'>Stock:</span><input  type="number" name="stock" required><br>
+            <span style='color:white'>Stock:</span><input style="width:80%"  type="number" name="stock" required><br>
             <span style='color:white'>Proveedor:</span>
             <select class="form-control" name="proveedor" required>
             <option value="" disabled hidden selected> -Selecciona un proveedor- </option>
@@ -55,7 +55,7 @@
 
 
             <br>
-            <p><input type="submit" value="Crear"></p>
+            <p><input class="btn-primary" type="submit" value="Crear"></p>
           </fieldset>
         </form>
 
@@ -131,7 +131,7 @@
        }
                
               echo" </select>
-               <p><input type='submit' value='Crear'></p>
+               <p><input class='btn-primary' type='submit' value='Crear'></p>
              </fieldset>
            </form>";
            echo "<p style='color:green;background-color:black'>Producto insertado correctamente</p>"; 
@@ -178,7 +178,7 @@
        }
                
               echo" </select>
-        <p><input type='submit' value='Crear'></p>
+        <p><input class='btn-primary' type='submit' value='Crear'></p>
       </fieldset>
     </form>";
      echo "<p style='color:red;background-color:black'>Esa Descripción ya existe</p>";
