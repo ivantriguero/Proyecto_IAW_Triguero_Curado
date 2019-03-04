@@ -19,7 +19,6 @@
     </style>
   </head>
   <body>
-  
 <div class="row justify-content-center">
       <div id="form" class="col-md-12">
       <?php if (!isset($_POST["desc"])) : ?>
@@ -30,6 +29,29 @@
             <span style='color:white'>Precio:</span><input type="number" name="price" required><br>
             <span style='color:white'>Imagen:</span><input style="color:white" type="file" name="imagen" required><br>
             <span style='color:white'>Stock:</span><input type="number" name="stock" required><br>
+            <span style='color:white'>Proveedor:</span>
+            <select name="proveedor">
+            <?php 
+  $connection = new mysqli("localhost", "root", "Admin2015", "mercado",3316);
+  $connection->set_charset("uft8");
+
+  if ($connection->connect_errno) {
+      printf("Connection failed: %s\n", $connection->connect_error);
+      exit();
+  }
+
+
+  $query = "select * from proveedores";
+  if ($result = $connection->query($query)) {}
+    while($obj = $result->fetch_object()) {
+
+            echo"<option value='".$obj->cod_proveedor."' required>".$obj->nombre."</option>";
+            
+    }
+            ?>
+            </select>
+
+
             <br>
             <p><input type="submit" value="Crear"></p>
           </fieldset>
@@ -51,13 +73,15 @@
         $price = $_POST["price"];
         $file = addslashes(file_get_contents($_FILES['imagen']['tmp_name']));
         $stock = $_POST["stock"];
+        $proveedor = $_POST["proveedor"];
+
 
         $query = "select * from productos where descripcion='".$desc."'";
         if ($result = $connection->query($query)) {}
         $obj = $result->fetch_object();
         if ($result->num_rows==0) {
-        $query = "INSERT INTO productos (descripcion,precio,imagen,stock)
-        VALUES ('$desc','$price','$file','$stock')";
+        $query = "INSERT INTO productos (descripcion,precio,cod_proveedor,imagen,stock)
+        VALUES ('$desc','$price','$proveedor','$file','$stock')";
 
 
         if ($connection->query($query)) {
@@ -85,6 +109,26 @@
                <span style='color:white'>Imagen:</span><input style='color:white' type='file' name='imagen' required><br>
                <span style='color:white'>Stock:</span><input type='number' name='stock' required><br>
                <br>
+               <select name='proveedor'>";
+               
+     $connection = new mysqli("localhost", "root", "Admin2015", "mercado",3316);
+     $connection->set_charset("uft8");
+   
+     if ($connection->connect_errno) {
+         printf("Connection failed: %s\n", $connection->connect_error);
+         exit();
+     }
+   
+   
+     $query = "select * from proveedores";
+     if ($result = $connection->query($query)) {}
+       while($obj = $result->fetch_object()) {
+   
+               echo"<option value='".$obj->cod_proveedor."' required>".$obj->nombre."</option>";
+               
+       }
+               
+              echo" </select>
                <p><input type='submit' value='Crear'></p>
              </fieldset>
            </form>";
@@ -111,6 +155,26 @@
         <span style='color:white'>Imagen:</span><input style='color:white' type='file' name='imagen' required><br>
         <span style='color:white'>Stock:</span><input type='number' name='stock' value='".$stock."' required><br>
         <br>
+        <select name='proveedor'>";
+               
+     $connection = new mysqli("localhost", "root", "Admin2015", "mercado",3316);
+     $connection->set_charset("uft8");
+   
+     if ($connection->connect_errno) {
+         printf("Connection failed: %s\n", $connection->connect_error);
+         exit();
+     }
+   
+   
+     $query = "select * from proveedores";
+     if ($result = $connection->query($query)) {}
+       while($obj = $result->fetch_object()) {
+   
+               echo"<option value='".$obj->cod_proveedor."' required>".$obj->nombre."</option>";
+               
+       }
+               
+              echo" </select>
         <p><input type='submit' value='Crear'></p>
       </fieldset>
     </form>";

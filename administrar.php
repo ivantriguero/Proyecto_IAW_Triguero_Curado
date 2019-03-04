@@ -69,6 +69,10 @@ if ($result = $connection->query($query)) {}
             <div class="col-md-12">
             <a href="administrarpedidos.php"><button class="btn-danger btn-block btn-lg" style="height:100px">Administrar Pedidos</button></a>
             </div>
+
+            <div class="col-md-12">
+            <a href="administrarproveedores.php"><button class="btn-danger btn-block btn-lg" style="height:100px">Administrar Proveedores</button></a>
+            </div>
           </div>
           <div class="col-md-5 vcenter" id="inf">   
       <?php

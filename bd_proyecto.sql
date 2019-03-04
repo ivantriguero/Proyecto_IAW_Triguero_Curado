@@ -43,3 +43,4 @@ create table incluyen(
 
 alter table pedidos add precio decimal(6,2);
 alter table pedidos add productos varchar(20000);
+alter table proveedores add tlf int;
