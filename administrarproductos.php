@@ -23,6 +23,8 @@ if ($result = $connection->query($query)) {}
     <title>MercaPalacio</title>
     <link rel="shortcut icon" href="./imagenes/logo1.png" />
     <link rel="stylesheet" type="text/css" href="./css/administrar.css">
+    <script type="text/javascript" src="fusioncharts/fusioncharts.js"></script>
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
@@ -52,6 +54,8 @@ if ($result = $connection->query($query)) {}
 
           <div class="row" style="padding-top:10px">
           <div class="col-md-6">
+          <div class="row">
+          <div class="col-md-12">
           <p>
   <button class="btn-danger btn-block btn-lg" type="button" data-toggle="collapse" data-target="#myCollapsible" aria-expanded="false" aria-controls="myCollapsible">
     Insertar Productos
@@ -64,20 +68,41 @@ include 'insertarproductos.php'
 ?>
   </div>
 </div>
-         </div>
-        <div class="col-md-6" style="padding-left:0px">
+        <div class="col-md-12">
         <p>
         <a href="editarproductos.php"><button class="btn-danger btn-block btn-lg" type="button">
 Editar Productos
   </button></a>
   </p>
+  </div>
+<div class="col-md-12">
   <p>
         <a href="eliminarproductos.php"><button class="btn-danger btn-block btn-lg" type="button">
 Eliminar Productos
   </button></a>
   </p>
-        </div>
+  </div>
 
+        </div>
+        </div>
+        <div class="col-md-6">
+        
+        <?php
+       
+?>
+        <h3>Chart using data from JSON URL</h3>
+        <div id="chart-container">Chart will render here!</div>
+        <br/>
+        <br/>
+        <a href="../index.php">Go Back</a>
+
+        
+        
+        </div>
+        </div>
+        
+
+        </div>
         </div>
       <script>
     $(function() {

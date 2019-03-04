@@ -26,11 +26,13 @@
           <fieldset>
             <legend style="color:white">- Registrar Producto -</legend>
             <span style='color:white'>Descripción:</span><input type="text" name="desc" required><br>
-            <span style='color:white'>Precio:</span><input type="number" name="price" required><br>
+            <span style='color:white'>Precio:</span><input step="any" type="number" name="price" required><br>
             <span style='color:white'>Imagen:</span><input style="color:white" type="file" name="imagen" required><br>
-            <span style='color:white'>Stock:</span><input type="number" name="stock" required><br>
+            <span style='color:white'>Stock:</span><input  type="number" name="stock" required><br>
             <span style='color:white'>Proveedor:</span>
-            <select name="proveedor">
+            <select class="form-control" name="proveedor" required>
+            <option value="" disabled hidden selected> -Selecciona un proveedor- </option>
+
             <?php 
   $connection = new mysqli("localhost", "root", "Admin2015", "mercado",3316);
   $connection->set_charset("uft8");
@@ -45,7 +47,7 @@
   if ($result = $connection->query($query)) {}
     while($obj = $result->fetch_object()) {
 
-            echo"<option value='".$obj->cod_proveedor."' required>".$obj->nombre."</option>";
+            echo"<option value='".$obj->cod_proveedor."'>".$obj->nombre."</option>";
             
     }
             ?>
@@ -105,12 +107,12 @@
              <fieldset>
                <legend style='color:white'>- Registrar Producto -</legend>
                <span style='color:white'>Descripción:</span><input type='text' name='desc' required><br>
-               <span style='color:white'>Precio:</span><input type='number' name='price' required><br>
+               <span style='color:white'>Precio:</span><input step='any' type='number' name='price' required><br>
                <span style='color:white'>Imagen:</span><input style='color:white' type='file' name='imagen' required><br>
                <span style='color:white'>Stock:</span><input type='number' name='stock' required><br>
                <br>
-               <select name='proveedor'>";
-               
+               <select name='proveedor' class='form-control' required>";
+               echo"<option value='' disabled hidden selected> -Selecciona un proveedor- </option>";
      $connection = new mysqli("localhost", "root", "Admin2015", "mercado",3316);
      $connection->set_charset("uft8");
    
@@ -151,12 +153,13 @@
       <fieldset>
         <legend style='color:white'>- Registrar Producto -</legend>
         <span style='color:white'>Descripción:</span><input type='text' name='desc' required><br>
-        <span style='color:white'>Precio:</span><input type='number' name='price' value='".$price."' required><br>
+        <span style='color:white'>Precio:</span><input step='any' type='number' name='price' value='".$price."' required><br>
         <span style='color:white'>Imagen:</span><input style='color:white' type='file' name='imagen' required><br>
         <span style='color:white'>Stock:</span><input type='number' name='stock' value='".$stock."' required><br>
         <br>
-        <select name='proveedor'>";
-               
+        <select name='proveedor' class='form-control'>";
+        echo"<option value='' disabled hidden selected> -Selecciona un proveedor- </option>";
+
      $connection = new mysqli("localhost", "root", "Admin2015", "mercado",3316);
      $connection->set_charset("uft8");
    

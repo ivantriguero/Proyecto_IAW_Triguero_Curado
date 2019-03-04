@@ -83,7 +83,7 @@ if ($result = $connection->query($query)) {}
             echo "<input type='hidden' name='cod' value='".$obj->cod_producto."'>";
             echo "<input type='text' name='desc' value='".$obj->descripcion."'>";
             echo "Cantidad: <input type='number' name='stock' value='".$obj->stock."'><br>";
-            echo "Precio: <input type='number' name='precio' value='".$obj->precio."'>€<br>";
+            echo "Precio: <input step='any' type='number' name='precio' value='".$obj->precio."'>€<br>";
             echo "<input type='submit' value='Editar' class='btn btn-primary'>";
             echo "</div>";
             echo "</form>";
@@ -119,7 +119,7 @@ if ($result = $connection->query($query)) {}
             echo "<input type='hidden' name='cod' value='".$obj->cod_producto."'>";
             echo "<input type='text' name='desc' value='".$obj->descripcion."'>";
             echo "Cantidad: <input type='number' name='stock' value='".$obj->stock."'><br>";
-            echo "Precio: <input type='number' name='precio' value='".$obj->precio."'>€<br>";
+            echo "Precio: <input step='any' type='number' name='precio' value='".$obj->precio."'>€<br>";
             echo "<input type='submit' value='Editar' class='btn btn-primary'>";
             echo "</div>";
             echo "</form>";

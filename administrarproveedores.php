@@ -62,8 +62,56 @@ if ($result = $connection->query($query)) {}
         <div class='row justify-content-center'>
         
         <?php
+          if (array_key_exists('id1', $_GET)) {
+            $connection = new mysqli("localhost", "root", "Admin2015", "mercado");
+            $connection->set_charset("uft8");
+            $query="delete from proveedores where cod_proveedor=".$_GET["id1"]."";
+  
+            if ($result = $connection->query($query)) {
 
-            
+                echo "<h3 style='color:red'>Proveedor eliminado correctamente</h3>";
+              
+
+              $connection = new mysqli("localhost", "root", "Admin2015", "mercado");
+              $connection->set_charset("uft8");
+              
+              if ($connection->connect_errno) {
+                  printf("Connection failed: %s\n", $connection->connect_error);
+                  exit();
+              }
+              
+                $query="select * from proveedores;";
+      
+                if ($result = $connection->query($query)) {}
+      
+                  echo "<table class='table table-hover'>";
+                  echo "<thead><tr>";
+                  echo "<th scope='col'>Cod</th>";              
+                  echo "<th scope='col'>Nombre</th>";
+                  echo "<th scope='col'>telefono</th>";
+                  echo "<th scope='col'></th>";
+                  echo"</tr></thead>";
+              while($obj = $result->fetch_object()) {
+                echo "<tr>";
+                echo "<form method='post'>";
+                echo"<th scope='row'>".$obj->cod_proveedor."</th>";
+                echo "<td>$obj->nombre</td>";
+                echo "<td>$obj->tlf</td>";
+                echo "<td><a href='administrarproveedores1.php?id=".$obj->cod_proveedor."' class='btn btn-primary'><i class='fas fa-pencil-alt'></i></a><a href='administrarproveedores.php?id1=".$obj->cod_proveedor."' class='btn btn-danger'><i class='fas fa-trash-alt'></i></a></td>";
+                echo "</form>";
+                echo "<tr>
+                ";
+            }
+            echo "</table>";
+  
+            } else {
+  
+              echo "error al eliminar proveedor";
+  
+            }}else {
+              if (array_key_exists('editado', $_GET)) {
+                echo "<h3 style='color:green'>Proveedor editado correctamente</h3>";
+              }
               $connection = new mysqli("localhost", "root", "Admin2015", "mercado");
               $connection->set_charset("uft8");
               
@@ -96,7 +144,7 @@ if ($result = $connection->query($query)) {}
               }
               echo "</table>";
   
-            
+            }
   
             
         ?>

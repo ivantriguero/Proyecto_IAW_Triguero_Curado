@@ -74,7 +74,7 @@
 <p><i class="far fa-envelope"></i> <input class="text" placeholder="Email" name="email" required></p>
 <p><i class="fas fa-key"></i> <input class="text" placeholder="Contraseña" name="password" type="password" required></p>
 <p><input class="ic" type="submit" value="Iniciar sesión"></p>
-<p>¿Aún no eres cliente?<a href="./registro.php">Regístrate</a></p>
+<p>¿Aún no eres cliente?<a href="./registro.php"> Regístrate</a></p>
 
 </form>
 			</div>
