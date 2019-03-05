@@ -59,9 +59,67 @@ if ($result = $connection->query($query)) {}
           <h1>Productos</h1>
     </div>
   </div>
+  <div class="row justify-content-end">
+  <div class="col-md-3">
+  <form method='post'>
+
+  <input type="text" name="producto"><button type='submit' class='btn btn-danger'>Buscar</button>
+      </form>
+  </div>
+  </div>
         <div class="container-fluid" style="padding:0px">
         <div class="row">
         <?php
+        $connection = new mysqli("localhost", "root", "Admin2015", "mercado");
+        $connection->set_charset("uft8");
+        
+        if ($connection->connect_errno) {
+            printf("Connection failed: %s\n", $connection->connect_error);
+            exit();
+        }
+        if (isset($_POST['producto'] )& !empty($_POST['producto'])){
+          
+
+          $query="select * from productos where descripcion like '%".$_POST['producto']."%'";
+
+          if ($result = $connection->query($query)) {}
+            if ($result->num_rows!==0) {
+
+
+            while($obj = $result->fetch_object()) {
+              if ($obj->stock==0){
+              echo "<div class='col-md-2'>";
+              echo "<div class='card'>";
+              echo "<div class='d-flex align-items-center' style='witdh:220px;height:270px'><img class='rounded mx-auto d-block img-fluid' alt='Card image cap' src='data:image/png;base64,".base64_encode($obj->imagen)."'/></div>";
+              echo "<div class='card-body'>";
+              echo "<h3 class='card-title'>".$obj->descripcion."</h3>";
+              echo "Stock: <span style='color:red'>Sin existencias</span><br>";
+              echo "Precio: ".$obj->precio."€<br>";
+              echo "</div>";
+              echo "</div>";
+              echo "</div>";
+              }else{
+              echo "<div class='col-md-2'>";
+              echo "<div class='card'>";
+              echo "<div class='d-flex align-items-center' style='witdh:220px;height:270px'><img class='rounded mx-auto d-block img-fluid' alt='Card image cap' src='data:image/png;base64,".base64_encode($obj->imagen)."'/></div>";
+              echo "<div class='card-body'>";
+              echo "<h3 class='card-title'>".$obj->descripcion."</h3>";
+              echo "Stock: ".$obj->stock."<br>";
+              echo "Precio: ".$obj->precio."€<br>";
+              echo "<form method='post' action='addtocart.php?id=".$obj->cod_producto."&stock=".$obj->stock."'>";
+              echo "Cantidad: <input type='number' name='cantidad' required>";
+              echo "<button type='submit' id='button' class='btn btn-primary'>Comprar</button>";
+              echo "</form>";
+              echo "</div>";
+              echo "</div>";
+              echo "</div>";
+              }
+            }}else{
+              echo "<h1>No se ha encontrado el producto ".$_POST['producto']."</h1>";
+            }
+
+
+        }else{
 if(isset($_GET['stock']) & !empty($_GET['stock'])){  
   echo"<script>
   $(function() {
@@ -71,13 +129,7 @@ if(isset($_GET['stock']) & !empty($_GET['stock'])){
 }else{
   null;
 }
-        $connection = new mysqli("localhost", "root", "Admin2015", "mercado");
-        $connection->set_charset("uft8");
         
-        if ($connection->connect_errno) {
-            printf("Connection failed: %s\n", $connection->connect_error);
-            exit();
-        }
         
           $query="select * from productos;";
         if ($result = $connection->query($query)) {}
@@ -111,7 +163,7 @@ if(isset($_GET['stock']) & !empty($_GET['stock'])){
             echo "</div>";
             echo "</div>";
             }
-          }
+          }}
 
 
 

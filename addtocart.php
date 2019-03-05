@@ -4,15 +4,19 @@ session_start();
 
     if(isset($_SESSION['cart']) & !empty($_SESSION['cart'])){
         if ($_GET["stock"]>=$_POST["cantidad"]){
-        $items = $_SESSION['cart'];
-        $cantidad = $_SESSION['cantidad'];
-        $items[] = $_GET['id'];
-        $cantidad[] = $_POST["cantidad"];
-        $_SESSION['cart'] = $items;
-        $_SESSION['cantidad'] = $cantidad;
-        echo $_POST["cantidad"]."<br>";
-        echo $_GET["id"];
+            for ($i=0;$i<sizeof($_SESSION['cart']);$i++) {
+                if ($_SESSION['cart'][$i]==$_GET["id"]){
+                    $_SESSION['cantidad'][$i]=$_SESSION['cantidad'][$i]+$_POST["cantidad"];
+                }
+               
+                }
+                if(!in_array($_GET["id"],$_SESSION['cart'])){
+                    $_SESSION['cart'][]=$_GET['id'];
+                    $_SESSION['cantidad'][]=$_POST["cantidad"];
+            }
+
         header('location: productos.php?status=success');
+    
         }else{
             header('location: productos.php?stock=no');
         }
@@ -25,7 +29,6 @@ session_start();
         $cantidad[] = $_POST["cantidad"];
         $_SESSION['cart'] = $items;
         $_SESSION['cantidad'] = $cantidad;
-        echo $_POST["cantidad"];    
         header('location: productos.php?status=success');
     }else{
         header('location: productos.php?stock=no');
