@@ -38,9 +38,11 @@ if ($result = $connection->query($query)) {}
   </head>
   <body>
   <div class ="container-fluid" id="contenedor">
-      <?php
+  <?php
       if (isset($_SESSION["user"])) {
         if ($obj->tipo=="cliente"){
+          header("Location: index.php");
+          session_destroy();
         include 'cabecerasesion.php';
       } elseif ($obj->tipo=="administrador") {
         include 'cabeceraadmi.php';
@@ -51,6 +53,7 @@ if ($result = $connection->query($query)) {}
 
       ?>
    
+   <a class='b1 btn btn-outline-danger' href='administrar.php'><i class='fas fa-arrow-left'></i></a>
 
           <div class="row" style="padding-top:10px">
           <div class="col-md-12">

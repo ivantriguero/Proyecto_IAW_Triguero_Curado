@@ -37,9 +37,11 @@ if ($result = $connection->query($query)) {}
   </head>
   <body>
   <div class ="container-fluid" id="contenedor">
-      <?php
+  <?php
       if (isset($_SESSION["user"])) {
         if ($obj->tipo=="cliente"){
+          header("Location: index.php");
+          session_destroy();
         include 'cabecerasesion.php';
       } elseif ($obj->tipo=="administrador") {
         include 'cabeceraadmi.php';
@@ -86,6 +88,8 @@ if ($result = $connection->query($query)) {}
 
               echo "<table>";
               while($obj = $result->fetch_object()) {
+                echo "<tr><td></td><td id='lapiz'><a href='editarcuenta1.php?id=".$obj->cod_usuario."' class='btn btn-outline-danger fa-1x'><i class='fas fa-pen'></i></a></td></tr>";
+
               echo "<tr><td>Código:</td><td>".$obj->cod_usuario."</td></tr>";
               echo "<tr><td>Nombre:</td><td>".$obj->nombre."</td></tr>";
               echo "<tr><td>Apellidos:</td><td>".$obj->apellidos."</td></tr>";

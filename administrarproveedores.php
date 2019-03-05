@@ -36,28 +36,26 @@ if ($result = $connection->query($query)) {}
   </head>
   <body>
   <div class ="container-fluid" id="contenedor">
-      <?php
+  <?php
       if (isset($_SESSION["user"])) {
         if ($obj->tipo=="cliente"){
+          header("Location: index.php");
+          session_destroy();
         include 'cabecerasesion.php';
-        $result->close();
-        unset($obj);
-        unset($connection);
       } elseif ($obj->tipo=="administrador") {
         include 'cabeceraadmi.php';
-        $result->close();
-        unset($obj);
-        unset($connection);
       } }else {
         session_destroy();
         header("Location: index.php");
       };
-?>
+
+      ?>
 <div class="row justify-content-center" id="c2" >
     <div class="col-md-6">
           <h1>Proveedores</h1>
     </div>
   </div>
+  <a class='b1 btn btn-outline-danger' href='administrar.php'><i class='fas fa-arrow-left'></i></a>
         <div class="container-fluid" style="padding:0px">
         <div class='row justify-content-center'>
         <div class='row'><div class='col-md-7'><h5 style='color:red'>Ten en cuenta que al eliminar un producto se elimina el/los producto asociado a él</h5></div></div>
@@ -73,7 +71,7 @@ if ($result = $connection->query($query)) {}
   
             if ($result = $connection->query($query)) {
 
-                echo "<h3 style='color:green'>Proveedor eliminado correctamente</h3>";
+                echo "<div class='col-md-12'><h3 style='color:green'>Proveedor eliminado correctamente</h3></div>";
               
 
               $connection = new mysqli("localhost", "root", "Admin2015", "mercado");

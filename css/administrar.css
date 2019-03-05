@@ -1,8 +1,10 @@
 div#inf{
-    background-color:#C70039;
+    border:7px solid #c9302c;
     border-radius: 10px;
-    color:white;
     align-items: center;
     display: flex;
     font-size: 200%;
+}
+#lapiz{
+padding-left: 90%;
 }

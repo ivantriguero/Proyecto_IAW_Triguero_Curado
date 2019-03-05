@@ -97,7 +97,6 @@ if ($result = $connection->query($query)) {}
                     <p>$obj->direccion</p>
                     <input type='hidden' name='cod' value='".$obj->cod_usuario."'>
                   </div>
-                  <button type='submit' class='btn btn-primary'>Editar</button>
                 </form>
                 </div>
                 </div>";

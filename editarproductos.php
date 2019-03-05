@@ -37,23 +37,26 @@ if ($result = $connection->query($query)) {}
   </head>
   <body>
   <div class ="container-fluid" id="contenedor">
-      <?php
+  <?php
       if (isset($_SESSION["user"])) {
         if ($obj->tipo=="cliente"){
+          header("Location: index.php");
+          session_destroy();
         include 'cabecerasesion.php';
-        $result->close();
-        unset($obj);
-        unset($connection);
       } elseif ($obj->tipo=="administrador") {
         include 'cabeceraadmi.php';
-        $result->close();
-        unset($obj);
-        unset($connection);
       } }else {
         session_destroy();
         header("Location: index.php");
       };
-?>
+
+      ?>
+      <div class="row justify-content-center" id="c2" >
+    <div class="col-md-6">
+          <h1>Editar</h1>
+    </div>
+  </div>
+  <a class='b1 btn btn-outline-danger' href='administrarproductos.php'><i class='fas fa-arrow-left'></i></a>
 
         <div class="container-fluid" style="padding:0px">
         <div class="row">
@@ -92,6 +95,43 @@ if ($result = $connection->query($query)) {}
             }
           }
           if (array_key_exists('cod', $_POST)) {
+            $query="select * from productos where descripcion='".$_POST["desc"]."' AND cod_producto!=".$_POST["cod"].";";
+            if ($result = $connection->query($query)) {}
+              $obj = $result->fetch_object();
+              if ($result->num_rows!==0) {
+                $query="select * from productos;";
+
+         
+                if ($result = $connection->query($query)) {}
+        
+                  while($obj = $result->fetch_object()) {
+        
+
+                      echo "<div class='col-md-2'>";
+                    echo "<div class='card'>";
+                    echo "<form method='post' enctype='multipart/form-data'>";
+                    echo "<div style='witdh:220px;height:270px'><img class='img-fluid' alt='Card image cap' src='data:image/png;base64,".base64_encode($obj->imagen)."'/></div>";
+                    echo "<input type='file' name='imagen' style='color:transparent;'>";
+                    echo "<div class='card-body'>";
+                    echo "<input type='hidden' name='cod' value='".$obj->cod_producto."'>";
+                    echo "<input type='text' name='desc' value='".$obj->descripcion."'>";
+                    echo "Cantidad: <input type='number' name='stock' value='".$obj->stock."'><br>";
+                    echo "Precio: <input step='any' type='number' name='precio' value='".$obj->precio."'>€<br>";
+                    echo "<input type='submit' value='Editar' class='btn btn-primary'>";
+                    echo "</div>";
+                    echo "</form>";
+                    echo "</div>";
+                    echo "</div>";
+                    
+                  }
+                  echo"<script>
+                  $(function() {
+                      alert('Esa descripción ya existe');
+                   });
+                    </script>";
+              }else{
+        if ($result = $connection->query($query)) {}
+
             if ($_FILES["imagen"]["size"]==0) {
           $query="update productos set descripcion='".$_POST["desc"]."',precio='".$_POST["precio"]."',
           stock='".$_POST["stock"]."' WHERE cod_producto='".$_POST["cod"]."'";
@@ -129,7 +169,7 @@ if ($result = $connection->query($query)) {}
           }
           } else {
             echo "Error al actualizar los datos";
-          }
+          }}
         }
 
         ?>
