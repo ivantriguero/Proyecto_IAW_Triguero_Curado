@@ -6,16 +6,24 @@ session_start();
         if ($_GET["stock"]>=$_POST["cantidad"]){
             for ($i=0;$i<sizeof($_SESSION['cart']);$i++) {
                 if ($_SESSION['cart'][$i]==$_GET["id"]){
+                    if($_GET["stock"]>= $_SESSION['cantidad'][$i]+$_POST["cantidad"]){
                     $_SESSION['cantidad'][$i]=$_SESSION['cantidad'][$i]+$_POST["cantidad"];
+                    header('location: productos.php?status=success');
+
+                }else{
+                    header('location: productos.php?stock=no');
                 }
+            
+            }
                
                 }
                 if(!in_array($_GET["id"],$_SESSION['cart'])){
                     $_SESSION['cart'][]=$_GET['id'];
                     $_SESSION['cantidad'][]=$_POST["cantidad"];
+                    header('location: productos.php?status=success');
+
             }
 
-        header('location: productos.php?status=success');
     
         }else{
             header('location: productos.php?stock=no');

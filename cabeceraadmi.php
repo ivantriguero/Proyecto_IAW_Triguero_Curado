@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -40,7 +40,6 @@
             <div class="col-md-2"><a href="./carrito.php"><button type="button" class="b1 btn btn-outline-danger"><i class="fas fa-shopping-basket fa-3x"></i>
             <?php
                 if(isset($_SESSION['cart']) & !empty($_SESSION['cart'])){
-
             echo"".sizeof($_SESSION['cart'])."";
           }
             ?>
@@ -51,7 +50,6 @@
             </div>
             </div>
       <?php 
-
 ?>
           
 

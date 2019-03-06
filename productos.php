@@ -38,6 +38,9 @@ if ($result = $connection->query($query)) {}
   <body>
   <div class ="container-fluid" id="contenedor">
       <?php
+      if(isset($_GET['status']) & !empty($_GET['status'])){  
+        echo"<div style='background-color:#0D7C00;color:white' class='row justify-content-center'>Producto agregado correctamente</div>";
+      }
       if (isset($_SESSION["user"])) {
         if ($obj->tipo=="cliente"){
         include 'cabecerasesion.php';
@@ -63,7 +66,7 @@ if ($result = $connection->query($query)) {}
   <div class="col-md-3">
   <form method='post'>
 
-  <input type="text" name="producto"><button type='submit' class='btn btn-danger'>Buscar</button>
+  <input class='mb-2 w-50' type="text" name="producto"><button type='submit' class='btn btn-danger mb-2 ml-2'>Buscar</button>
       </form>
   </div>
   </div>
@@ -90,7 +93,7 @@ if ($result = $connection->query($query)) {}
               if ($obj->stock==0){
               echo "<div class='col-md-2'>";
               echo "<div class='card'>";
-              echo "<div class='d-flex align-items-center' style='witdh:220px;height:270px'><img class='rounded mx-auto d-block img-fluid' alt='Card image cap' src='data:image/png;base64,".base64_encode($obj->imagen)."'/></div>";
+              echo "<div class='d-flex align-items-center'><img class='rounded mx-auto d-block img-fluid' alt='Card image cap' src='data:image/png;base64,".base64_encode($obj->imagen)."'/></div>";
               echo "<div class='card-body'>";
               echo "<h3 class='card-title'>".$obj->descripcion."</h3>";
               echo "Stock: <span style='color:red'>Sin existencias</span><br>";
@@ -101,13 +104,13 @@ if ($result = $connection->query($query)) {}
               }else{
               echo "<div class='col-md-2'>";
               echo "<div class='card'>";
-              echo "<div class='d-flex align-items-center' style='witdh:220px;height:270px'><img class='rounded mx-auto d-block img-fluid' alt='Card image cap' src='data:image/png;base64,".base64_encode($obj->imagen)."'/></div>";
+              echo "<div class='d-flex align-items-center'><img class='rounded mx-auto d-block img-fluid' alt='Card image cap' src='data:image/png;base64,".base64_encode($obj->imagen)."'/></div>";
               echo "<div class='card-body'>";
               echo "<h3 class='card-title'>".$obj->descripcion."</h3>";
               echo "Stock: ".$obj->stock."<br>";
               echo "Precio: ".$obj->precio."€<br>";
               echo "<form method='post' action='addtocart.php?id=".$obj->cod_producto."&stock=".$obj->stock."'>";
-              echo "Cantidad: <input type='number' name='cantidad' required>";
+              echo "Cantidad: <input class='mb-2 w-50' type='number' name='cantidad' required>";
               echo "<button type='submit' id='button' class='btn btn-primary'>Comprar</button>";
               echo "</form>";
               echo "</div>";
@@ -156,7 +159,7 @@ if(isset($_GET['stock']) & !empty($_GET['stock'])){
             echo "Stock: ".$obj->stock."<br>";
             echo "Precio: ".$obj->precio."€<br>";
             echo "<form method='post' action='addtocart.php?id=".$obj->cod_producto."&stock=".$obj->stock."'>";
-            echo "Cantidad: <input type='number' name='cantidad' required>";
+            echo "Cantidad: <input class='mb-2 w-50' type='number' name='cantidad' required>";
             echo "<button type='submit' id='button' class='btn btn-primary'>Comprar</button>";
             echo "</form>";
             echo "</div>";
