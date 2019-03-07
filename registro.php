@@ -108,6 +108,7 @@ session_start();
         $query = "INSERT INTO usuarios (nombre,passwd,apellidos,direccion,email,tipo)
         VALUES ('$usuario',md5('$passwd'),'$apellidos','$direccion','$email','cliente')";
 
+        $_SESSION["user"]=$email;
 
         if ($connection->query($query)) {
 

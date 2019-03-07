@@ -13,7 +13,8 @@ if ($connection->connect_errno) {
   email='".$_SESSION["user"]."';";
 if ($result = $connection->query($query)) {}
     $obj = $result->fetch_object();
-}
+  }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,9 +23,6 @@ if ($result = $connection->query($query)) {}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MercaPalacio</title>
     <link rel="shortcut icon" href="./imagenes/logo1.png" />
-    <link rel="stylesheet" type="text/css" href="./css/administrar.css">
-    <script type="text/javascript" src="fusioncharts/fusioncharts.js"></script>
-
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
@@ -52,55 +50,55 @@ if ($result = $connection->query($query)) {}
       };
 
       ?>
-   
-   <a class='b1 btn btn-outline-danger' href='administrar.php'><i class='fas fa-arrow-left'></i></a>
+<div class="row justify-content-center" id="c2" >
+    <div class="col-md-6">
+          <h1>Clientes</h1>
+    </div>
+  </div>
+  <a class='b1 btn btn-outline-danger' href='administrarproductos.php'><i class='fas fa-arrow-left'></i></a>
 
-          <div class="row" style="padding-top:10px">
-          <div class="col-md-12">
-          <div class="row">
-          <div class="col-md-12">
-          <p>
-  <button class="btn-danger btn-block btn-lg" type="button" data-toggle="collapse" data-target="#myCollapsible" aria-expanded="false" aria-controls="myCollapsible">
-    Insertar Productos
-  </button>
-</p>
-<div class="collapse" id="myCollapsible">
-  <div class="card card-body" style="padding:0px">
-  <?php
-include 'insertarproductos.php'
-?>
-  </div>
-</div>
-        <div class="col-md-12">
-        <p>
-        <a href="editarproductos.php"><button class="btn-danger btn-block btn-lg" type="button">
-Editar Productos
-  </button></a>
-  </p>
-  </div>
-<div class="col-md-12">
-  <p>
-        <a href="eliminarproductos.php"><button class="btn-danger btn-block btn-lg" type="button">
-Eliminar Productos
-  </button></a>
-  </p>
-  </div>
-
- <div class="col-md-12">
-        <p>
-        <a href="listaproductos.php"><button class="btn-danger btn-block btn-lg" type="button">
-Lista Productos
-  </button></a>
-  </p>
-  </div>
-
-        </div>
-        </div>
-        </div>
+        <div class="container-fluid" style="padding:0px">
+        <div class='row justify-content-center'>
         
+        <?php
+            $connection = new mysqli("localhost", "root", "Admin2015", "mercado");
+              $connection->set_charset("uft8");
+              
+              if ($connection->connect_errno) {
+                  printf("Connection failed: %s\n", $connection->connect_error);
+                  exit();
+              }
+              
+                $query="select * from productos;";
+      
+              if ($result = $connection->query($query)) {}
+      
+                    echo "<table class='table table-hover'>";
+                    echo "<thead><tr>";
+                    echo "<th scope='col'>Cod</th>";              
+                    echo "<th scope='col'>Descripción</th>";
+                    echo "<th scope='col'>Precio</th>";
+                    echo "<th scope='col'>Cod_proveedor</th>";
+                    echo "<th scope='col'>Stock</th>";
+                    echo"</tr></thead>";
+                while($obj = $result->fetch_object()) {
+                  echo "<tr>";
+                  echo "<form method='post'>";
+                  echo"<th scope='row'>".$obj->cod_producto."</th>";
+                  echo "<td>$obj->descripcion</td>";
+                  echo "<td>$obj->precio</td>";
+                  echo "<td>$obj->cod_proveedor</td>";
+                  echo "<td>$obj->stock</td>";
+                  echo "</form>";
+                  echo "<tr>";
+              }
+              echo "</table>";
+
+            
+        ?>
 
         </div>
-        </div>
+      </div>
       <script>
     $(function() {
 

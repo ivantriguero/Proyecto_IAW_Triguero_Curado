@@ -39,20 +39,15 @@ if ($result = $connection->query($query)) {}
   <div class ="container-fluid" id="contenedor">
       
 <?php
-      if (isset($_SESSION["user"])) {
-        if ($obj->tipo=="cliente"){
-        include 'cabecerasesion.php';
-        $result->close();
-        unset($obj);
-        unset($connection);
-      } elseif ($obj->tipo=="administrador") {
-        include 'cabeceraadmi.php';
-        $result->close();
-        unset($obj);
-        unset($connection);
-      } }else {
-        include 'cabecera.php';
-      };
+     if (isset($_SESSION["user"])) {
+      if ($obj->tipo=="cliente"){
+      include 'cabecerasesion.php';
+    } elseif ($obj->tipo=="administrador") {
+      include 'cabeceraadmi.php';
+    } }else {
+      session_destroy();
+      header("Location: index.php");
+    };
 
 ?>
 <div class="row justify-content-center" id="c2" >
@@ -97,7 +92,7 @@ $_SESSION['cantidad']=[];
  <a class='b1 btn btn-outline-danger' href='index.php'><h3>Volver a inicio</h3></a>
  ";}else{
      echo "<h1>Para realizar el pedido es necesario registrarse</h1>
-     <a href='registro.php'>Registrarse</a>
+     <a href='registro.php'><h3>Registrarse</h3></a>
      ";
  }
 

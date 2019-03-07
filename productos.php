@@ -110,7 +110,7 @@ if ($result = $connection->query($query)) {}
               echo "Stock: ".$obj->stock."<br>";
               echo "Precio: ".$obj->precio."€<br>";
               echo "<form method='post' action='addtocart.php?id=".$obj->cod_producto."&stock=".$obj->stock."'>";
-              echo "Cantidad: <input class='mb-2 w-50' type='number' name='cantidad' required>";
+              echo "Cantidad: <input class='mb-2 w-50' min='0' type='number' name='cantidad' required>";
               echo "<button type='submit' id='button' class='btn btn-primary'>Comprar</button>";
               echo "</form>";
               echo "</div>";
@@ -159,7 +159,7 @@ if(isset($_GET['stock']) & !empty($_GET['stock'])){
             echo "Stock: ".$obj->stock."<br>";
             echo "Precio: ".$obj->precio."€<br>";
             echo "<form method='post' action='addtocart.php?id=".$obj->cod_producto."&stock=".$obj->stock."'>";
-            echo "Cantidad: <input class='mb-2 w-50' type='number' name='cantidad' required>";
+            echo "Cantidad: <input class='mb-2 w-50' min='0' type='number' name='cantidad' required>";
             echo "<button type='submit' id='button' class='btn btn-primary'>Comprar</button>";
             echo "</form>";
             echo "</div>";

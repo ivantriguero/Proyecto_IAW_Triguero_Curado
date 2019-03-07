@@ -100,6 +100,7 @@ if ($result = $connection->query($query)) {}
                 </form>
                 </div>
                 </div>";
+                $cod=$obj->cod_usuario;
                 }
 
                 
@@ -112,8 +113,12 @@ if ($result = $connection->query($query)) {}
       unset($obj);
       unset($connection);
 ?>
-
-
+<div class="col-md-12">
+<?php
+            echo"<a href='pedidos.php?id=".$cod."'><button class='btn btn-primary btn-block btn-lg' style='height:100px'>Mis pedidos</button></a>";
+?>
+            </div>
+          </div>
       
       </div>
 </div>
